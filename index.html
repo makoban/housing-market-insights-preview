@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex, nofollow">
+<title>戸建て市場インサイト | 住宅市場リサーチ</title>
+<link rel="stylesheet" href="v4.css">
+<link rel="stylesheet" href="where-built.css">
+<link rel="stylesheet" href="visual-direction.css">
+<link rel="stylesheet" href="readability.css">
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <a class="appmark" href="#top"><span class="appmark-icon"><i data-lucide="house"></i></span><span>戸建て市場<br>インサイト</span></a>
+  <nav aria-label="ページ内ナビゲーション">
+    <a href="#top"><i data-lucide="layout-dashboard"></i><span>全体像</span></a>
+    <a href="#evidence"><i data-lucide="list-checks"></i><span>実データの件数</span></a>
+    <a href="#brands"><i data-lucide="building-2"></i><span>メーカー反応</span></a>
+    <a href="#topics"><i data-lucide="message-circle"></i><span>Xの話題</span></a>
+    <a href="#housing"><i data-lucide="house-plus"></i><span>住宅着工の推移</span></a>
+    <a href="#where-built"><i data-lucide="map-pinned"></i><span>建築地域と時期</span></a>
+    <a href="#transactions"><i data-lucide="receipt-japanese-yen"></i><span>取引価格の事例</span></a>
+    <a href="#economy"><i data-lucide="chart-no-axes-combined"></i><span>経済指標</span></a>
+    <a href="#method"><i data-lucide="info"></i><span>読み方</span></a>
+  </nav>
+  <div class="sidebar-bottom">データの出典と<br>対象件数を一緒に表示</div>
+</aside>
+<main id="top">
+  <header class="page-header">
+    <div><div class="eyebrow">I&F × BANTEX / HOUSING MARKET INSIGHTS</div><h1>戸建て市場インサイト</h1><p>住宅メーカーへの反応、Xの話題、住宅着工と経済をひとつの画面で。</p></div>
+    <span class="status"><span class="status-dot"></span>調査データ</span>
+  </header>
+
+  <section class="pulse-section" aria-label="市場の動きと見立て">
+    <div class="pulse-heading"><div><span class="eyebrow">MARKET PULSE / 方向をひと目で</span><h2>いま・来月の向き</h2></div><span class="tag blue-tag">観測メーカー <b id="tracked-makers">—</b></span></div>
+    <div class="pulse-grid">
+      <article class="card pulse-card pulse-social"><span class="pulse-time">いま / X投稿</span><div class="pulse-symbol"><i data-lucide="arrow-down-right"></i></div><h3>Xの住宅話題は減少</h3><p id="topic-direction">—</p><small>直近15日と、その前の15日を比較</small><div class="pulse-reason"><strong>対象の5テーマ</strong><span id="social-factors">—</span><a href="#topics">投稿数の内訳を見る ↗</a></div></article>
+      <article class="card pulse-card pulse-housing"><span class="pulse-time">いま / 着工</span><div class="pulse-symbol"><i data-lucide="arrow-up-right"></i></div><h3>分譲一戸建ては増加</h3><p id="starts-yoy">—</p><small>2026年7月・前年同月比</small><div class="pulse-reason"><strong>比較した数字</strong><span id="housing-factors">—</span><a href="#housing">月別の推移を見る ↗</a></div></article>
+      <article class="card pulse-card pulse-forecast"><span class="pulse-time">来月 / 見通し</span><div class="pulse-symbol"><i data-lucide="arrow-down-right"></i></div><h3>話題の勢いは弱め</h3><p>販売数は未予測</p><small>Xの話題と着工から見た方向感</small><div class="pulse-reason"><strong>見通しの材料</strong><span id="forecast-factors">—</span><a href="#economy">参考の経済指標を見る ↗</a></div></article>
+      <article class="card pulse-card pulse-risk"><span class="pulse-time">炎上 / 兆し</span><div class="pulse-symbol"><i data-lucide="circle-help"></i></div><h3>判断材料が不足</h3><p>炎上度：—</p><small>投稿の広がりに関するデータ不足</small><div class="pulse-reason"><strong>判断を保留した理由</strong><span id="risk-factors">—</span><a href="#brands">メーカー別の反応を見る ↗</a></div></article>
+    </div>
+    <p class="pulse-caption">青・緑は集計済みの動き、点線の黄は来月の見通し、「？」は情報不足を示します。</p>
+  </section>
+
+  <section id="evidence" class="section evidence-section">
+    <div class="section-header"><div><span class="eyebrow">DATA COVERAGE / 集計の母数</span><h2>今回の集計件数</h2><p>Xの言及、取得した投稿、公開取引事例を分けて表示。</p></div></div>
+    <div class="basis-grid">
+      <article class="card basis-card"><span class="basis-icon blue"><i data-lucide="messages-square"></i></span><span>Xの名称一致</span><strong id="maker-keyword-total">—</strong><small>13社・31日間の検索結果を延べ合計</small></article>
+      <article class="card basis-card"><span class="basis-icon lilac"><i data-lucide="scan-search"></i></span><span>取得した投稿本文</span><strong id="sampled-post-total">—</strong><small>13社の対象投稿を延べ合計</small></article>
+      <article class="card basis-card"><span class="basis-icon mint"><i data-lucide="message-circle-check"></i></span><span>メーカーへの反応候補</span><strong id="reaction-total">—</strong><small>投稿本文から見つかった候補</small></article>
+      <article class="card basis-card"><span class="basis-icon amber-icon"><i data-lucide="house"></i></span><span>国交省の公開取引事例</span><strong id="transaction-total-card">—</strong><small>一宮市・土地と建物・9四半期</small></article>
+    </div>
+    <p class="subnote">Xは複数社の検索に同じ投稿が入ることがあり、延べ件数です。国交省の事例も購入総数ではありません。</p>
+  </section>
+
+  <section id="brands" class="section">
+    <div class="section-header"><div><span class="eyebrow">BRAND REACTIONS</span><h2>メーカーへの反応</h2><p>Xの言及数と、投稿に見られたポジ・ネガの声。</p></div><span class="tag blue-tag">13社の観測</span></div>
+    <div class="maker-toolbar"><label for="maker-search">メーカーを探す</label><input id="maker-search" type="search" placeholder="例：ミサワホーム" autocomplete="off"><label for="maker-sort">並び順</label><select id="maker-sort"><option value="default">メーカー一覧順</option><option value="volume">X言及が多い順</option><option value="positive">好意的な投稿候補が多い順</option></select></div>
+    <div class="brand-grid" id="brand-grid"></div>
+    <div class="section-note"><i data-lucide="info"></i><span>ポジ・ネガは対象投稿に見られた声の要約です。個別の意見は投稿者によるものです。</span></div>
+  </section>
+
+  <section id="topics" class="section">
+    <div class="section-header"><div><span class="eyebrow">X KEYWORD COUNTS</span><h2>この1か月の住宅話題</h2><p>31日間のキーワード一致投稿。増減は同じ15日間どうしを比較。</p></div><a class="source-link" href="https://docs.x.com/x-api/posts/counts/introduction" target="_blank" rel="noopener">X集計API <i data-lucide="arrow-up-right"></i></a></div>
+    <div class="card topics-card"><div class="topic-head"><span>テーマ</span><span>前15日 → 直近15日</span><span>増減</span></div><div id="topics-list"></div></div>
+    <p class="subnote">同じ投稿が複数テーマに入る場合があります。投稿数は購入意向を持つ人数ではなく、広告や業界投稿も含みます。</p>
+  </section>
+
+  <section id="housing" class="section">
+    <div class="section-header"><div><span class="eyebrow">OFFICIAL HOUSING STARTS</span><h2>一戸建ての過去推移</h2><p>国土交通省「分譲一戸建て」月次着工戸数。過去36か月を表示。</p></div><a class="source-link" href="https://www.mlit.go.jp/sogoseisaku/jouhouka/sosei_jouhouka_tk4_000002.html" target="_blank" rel="noopener">国交省の時系列 <i data-lucide="arrow-up-right"></i></a></div>
+    <div class="housing-grid">
+      <div class="card chart-card"><div class="chart-title"><strong>月別着工戸数</strong><span>全国・分譲一戸建て</span></div><div class="chart-scroll"><div class="bar-chart" id="bar-chart" role="img" aria-label="国交省の月次着工戸数、過去36か月"></div></div><div class="chart-axis"><span>2023年8月</span><span>2026年7月</span></div></div>
+      <div class="card history-summary"><div class="icon-box mint"><i data-lucide="house"></i></div><span class="eyebrow">LATEST / 2026.07</span><strong id="latest-starts">—</strong><span class="unit">戸・分譲一戸建て</span><div class="history-delta" id="history-delta">—</div><div class="thin-line"></div><p id="three-month-trend">—</p><small>前年同月・前年同期との比較。季節調整はしていません。</small></div>
+    </div>
+    <details class="table-detail"><summary>月別の数値を表で見る</summary><div class="table-scroll"><table><thead><tr><th>年月</th><th>分譲一戸建て</th><th>持家</th><th>全住宅</th></tr></thead><tbody id="history-table"></tbody></table></div></details>
+  </section>
+
+  <section id="where-built" class="section">
+    <div class="section-header"><div><span class="eyebrow">WHERE & WHEN / 国交省の着工統計</span><h2>一軒家の着工地と時期</h2><p>「新設・一戸建」の月別着工戸数。地域を選ぶと、過去12か月の動きがわかります。</p></div><a id="place-source" class="source-link" href="https://www.e-stat.go.jp/stat-search/files?cycle=1&amp;layout=datalist&amp;month=23070907&amp;tclass1val=0&amp;toukei=00600120&amp;tstat=000001016966&amp;year=20260" target="_blank" rel="noopener">選択月の原表 <i data-lucide="arrow-up-right"></i></a></div>
+    <div class="card place-panel">
+      <div class="place-controls">
+        <label>着工月<select id="place-month" aria-label="着工月"></select></label>
+        <label>都道府県<select id="place-prefecture" aria-label="都道府県"></select></label>
+        <label>市・区<select id="place-city" aria-label="市・区"></select></label>
+      </div>
+      <div class="place-stats" aria-live="polite">
+        <div><span>全国</span><strong id="place-national">—</strong><small>戸・新設一戸建</small></div>
+        <div><span id="place-prefecture-label">愛知県</span><strong id="place-prefecture-total">—</strong><small>戸・同じ着工月</small></div>
+        <div><span id="place-city-label">一宮市</span><strong id="place-city-total">—</strong><small>戸・同じ着工月</small></div>
+      </div>
+      <div class="place-bottom">
+        <div class="place-trend"><div class="place-block-title"><strong id="place-trend-title">一宮市の月別着工</strong><span>過去12か月</span></div><div id="place-monthly-bars" class="place-monthly-bars" role="img" aria-label="月別着工戸数"></div></div>
+        <div class="place-ranking"><div class="place-block-title"><strong id="place-ranking-title">愛知県内の市・区</strong><span id="place-ranking-month">—</span></div><div id="place-ranking-list" class="place-ranking-list"></div></div>
+      </div>
+    </div>
+    <p class="subnote">着工月は工事開始時期です。完成・販売・購入の件数ではありません。順位は人口規模を補正していません。市と政令指定都市の区は重複するため、順位では政令指定都市の区を除外しています。町村は個別表示の対象外です。</p>
+  </section>
+
+  <section id="transactions" class="section">
+    <div class="section-header"><div><span class="eyebrow">MLIT REAL ESTATE PRICES / 地域別の接続例</span><h2>土地と建物の取引価格</h2><p>国交省「不動産情報ライブラリ」の愛知県一宮市の公開事例を表示。</p></div><a class="source-link" href="https://www.reinfolib.mlit.go.jp/help/apiManual/xit001/" target="_blank" rel="noopener">国交省の公開データ <i data-lucide="arrow-up-right"></i></a></div>
+    <div class="transaction-grid"><div class="card transaction-chart"><div class="chart-title"><strong>四半期別・公開事例の中央値</strong><span>宅地（土地と建物）</span></div><div id="transaction-bars" class="transaction-bars" role="img" aria-label="愛知県一宮市の公開事例の四半期別価格中央値"></div><div class="transaction-legend">2024年第1四半期から直近公表分まで</div></div><div class="card transaction-summary"><span class="eyebrow">LATEST PUBLISHED / <span id="transaction-period">—</span></span><strong id="transaction-price">—</strong><small>公開事例の価格中央値</small><p id="transaction-cases">—</p><span class="tag amber">新築販売件数ではありません</span></div></div>
+    <p class="subnote">アンケート回答を加工した公開事例です。全購入件数・全国相場・新築戸建てだけの価格ではありません。</p>
+    <div class="card purchase-reference"><div><span class="eyebrow">ADMINISTRATIVE REFERENCE / 全国・別定義</span><h3>購入に関連する行政指標</h3><p>法務省の2025年「建物の売買による所有権移転登記」は <strong id="registration-total">—</strong> 件です。<a href="https://www.e-stat.go.jp/stat-search/file-download?fileKind=4&amp;statInfId=000040455780" target="_blank" rel="noopener">e-StatのExcel原表 ↗</a></p></div><div class="purchase-limit"><b>新築一戸建ての購入総数：このデータからは算出不可</b><span>登記は住宅以外の建物も含み、土地と建物の同時申請は土地側に計上されます。登記件数と購入者数も一致しません。</span></div></div>
+  </section>
+  <section id="economy" class="section">
+    <div class="section-header"><div><span class="eyebrow">MARKET CONTEXT</span><h2>経済と購入環境</h2><p>住宅購入の背景。頻度・観測日の異なる指標をまとめて点数化しません。</p></div><span class="tag pale">出典付き実測</span></div>
+    <div class="economy-grid" id="economy-grid"></div>
+  </section>
+
+  <section class="section" id="method">
+    <div class="section-header"><div><span class="eyebrow">ICON GUIDE</span><h2>アイコンの読み方</h2><p>実線は集計済みの動き、点線は見通し、「？」は情報不足です。</p></div></div>
+    <div class="card icon-guide">
+      <div><span class="guide-symbol guide-down"><i data-lucide="arrow-down-right"></i></span><b>減少</b><small>直近の投稿量</small></div>
+      <div><span class="guide-symbol guide-up"><i data-lucide="arrow-up-right"></i></span><b>増加</b><small>公表済みの着工</small></div>
+      <div><span class="guide-symbol guide-forecast"><i data-lucide="arrow-down-right"></i></span><b>見通し</b><small>来月の関心の向き</small></div>
+      <div><span class="guide-symbol guide-unknown"><i data-lucide="circle-help"></i></span><b>情報不足</b><small>炎上度のデータなし</small></div>
+    </div>
+  </section>
+  <footer>集計更新 <span id="updated-at">—</span> · 数値の読み方は各欄の注記をご覧ください</footer>
+</main>
+</div>
+<script src="assets/lucide.min.js"></script><script src="v4.js"></script><script src="where-built.js"></script>
+</body>
+</html>

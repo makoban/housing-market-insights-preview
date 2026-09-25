@@ -1,0 +1,58 @@
+{
+  "macro": [
+    {
+      "name": "住宅着工・分譲一戸建て",
+      "value": "10,578戸",
+      "change": "前年同月比 +9.0%",
+      "date": "2026年7月",
+      "source": "国土交通省",
+      "url": "https://www.mlit.go.jp/report/press/content/kencha807.pdf",
+      "frequency": "月次"
+    },
+    {
+      "name": "フラット35 最頻金利",
+      "value": "年3.46%",
+      "change": "21〜35年・融資率9割以下",
+      "date": "2026年9月",
+      "source": "住宅金融支援機構",
+      "url": "https://www.flat35.com/loan/",
+      "frequency": "月次"
+    },
+    {
+      "name": "消費者物価・総合",
+      "value": "+1.9%",
+      "change": "前年同月比",
+      "date": "2026年8月",
+      "source": "総務省統計局",
+      "url": "https://www.stat.go.jp/data/cpi/sokuhou/tsuki/index-z.htm",
+      "frequency": "月次"
+    },
+    {
+      "name": "ドル／円",
+      "value": "157.48〜50円",
+      "change": "17時時点の気配値",
+      "date": "2026年9月18日",
+      "source": "日本銀行",
+      "url": "https://www.boj.or.jp/statistics/market/forex/fxdaily/fxlist/fx260918.pdf",
+      "frequency": "日次・現在公表済みの最終日"
+    },
+    {
+      "name": "日経平均",
+      "value": "65,870.12円",
+      "change": "+1.31%・14:34時点",
+      "date": "2026年9月24日",
+      "source": "日経平均プロフィル",
+      "url": "https://indexes.nikkei.co.jp/nkave",
+      "frequency": "取引時間中のスナップショット"
+    },
+    {
+      "name": "金の店頭小売価格",
+      "value": "24,223円/g",
+      "change": "前営業日比 -16円",
+      "date": "2026年9月24日 9:30",
+      "source": "田中貴金属工業",
+      "url": "https://gold.tanaka.co.jp/commodity/souba/d-gold.php",
+      "frequency": "営業日"
+    }
+  ]
+}

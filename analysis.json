@@ -1,0 +1,593 @@
+{
+  "built_at": "2026-09-24T07:46:04.435609+00:00",
+  "mlit": {
+    "latest_detached_subdivision": 10578,
+    "july_yoy_pct": 9.0,
+    "three_months_detached": 31263,
+    "three_months_yoy_pct": 21.6,
+    "monthly": [
+      {
+        "month": "2023-08",
+        "detached_subdivision": 11589,
+        "owner_occupied": 20984,
+        "all_starts": 70389
+      },
+      {
+        "month": "2023-09",
+        "detached_subdivision": 11014,
+        "owner_occupied": 19527,
+        "all_starts": 68941
+      },
+      {
+        "month": "2023-10",
+        "detached_subdivision": 11368,
+        "owner_occupied": 18078,
+        "all_starts": 71769
+      },
+      {
+        "month": "2023-11",
+        "detached_subdivision": 11835,
+        "owner_occupied": 17789,
+        "all_starts": 66238
+      },
+      {
+        "month": "2023-12",
+        "detached_subdivision": 11470,
+        "owner_occupied": 17031,
+        "all_starts": 64586
+      },
+      {
+        "month": "2024-01",
+        "detached_subdivision": 9867,
+        "owner_occupied": 14805,
+        "all_starts": 58849
+      },
+      {
+        "month": "2024-02",
+        "detached_subdivision": 9713,
+        "owner_occupied": 16311,
+        "all_starts": 59169
+      },
+      {
+        "month": "2024-03",
+        "detached_subdivision": 10113,
+        "owner_occupied": 16644,
+        "all_starts": 64308
+      },
+      {
+        "month": "2024-04",
+        "detached_subdivision": 10579,
+        "owner_occupied": 17877,
+        "all_starts": 76582
+      },
+      {
+        "month": "2024-05",
+        "detached_subdivision": 10106,
+        "owner_occupied": 17238,
+        "all_starts": 65923
+      },
+      {
+        "month": "2024-06",
+        "detached_subdivision": 10007,
+        "owner_occupied": 19183,
+        "all_starts": 66287
+      },
+      {
+        "month": "2024-07",
+        "detached_subdivision": 9975,
+        "owner_occupied": 19863,
+        "all_starts": 68021
+      },
+      {
+        "month": "2024-08",
+        "detached_subdivision": 9578,
+        "owner_occupied": 19601,
+        "all_starts": 66823
+      },
+      {
+        "month": "2024-09",
+        "detached_subdivision": 10111,
+        "owner_occupied": 19355,
+        "all_starts": 68554
+      },
+      {
+        "month": "2024-10",
+        "detached_subdivision": 10511,
+        "owner_occupied": 19706,
+        "all_starts": 69670
+      },
+      {
+        "month": "2024-11",
+        "detached_subdivision": 10124,
+        "owner_occupied": 19771,
+        "all_starts": 65052
+      },
+      {
+        "month": "2024-12",
+        "detached_subdivision": 10513,
+        "owner_occupied": 17821,
+        "all_starts": 62957
+      },
+      {
+        "month": "2025-01",
+        "detached_subdivision": 8715,
+        "owner_occupied": 13525,
+        "all_starts": 56134
+      },
+      {
+        "month": "2025-02",
+        "detached_subdivision": 9628,
+        "owner_occupied": 16272,
+        "all_starts": 60583
+      },
+      {
+        "month": "2025-03",
+        "detached_subdivision": 12573,
+        "owner_occupied": 22955,
+        "all_starts": 89802
+      },
+      {
+        "month": "2025-04",
+        "detached_subdivision": 8169,
+        "owner_occupied": 13635,
+        "all_starts": 56188
+      },
+      {
+        "month": "2025-05",
+        "detached_subdivision": 7083,
+        "owner_occupied": 11920,
+        "all_starts": 43237
+      },
+      {
+        "month": "2025-06",
+        "detached_subdivision": 8921,
+        "owner_occupied": 16030,
+        "all_starts": 55956
+      },
+      {
+        "month": "2025-07",
+        "detached_subdivision": 9709,
+        "owner_occupied": 17665,
+        "all_starts": 61409
+      },
+      {
+        "month": "2025-08",
+        "detached_subdivision": 9476,
+        "owner_occupied": 17532,
+        "all_starts": 60275
+      },
+      {
+        "month": "2025-09",
+        "detached_subdivision": 10070,
+        "owner_occupied": 18273,
+        "all_starts": 63570
+      },
+      {
+        "month": "2025-10",
+        "detached_subdivision": 10564,
+        "owner_occupied": 18081,
+        "all_starts": 71871
+      },
+      {
+        "month": "2025-11",
+        "detached_subdivision": 10389,
+        "owner_occupied": 17901,
+        "all_starts": 59524
+      },
+      {
+        "month": "2025-12",
+        "detached_subdivision": 10638,
+        "owner_occupied": 17496,
+        "all_starts": 62118
+      },
+      {
+        "month": "2026-01",
+        "detached_subdivision": 9482,
+        "owner_occupied": 14418,
+        "all_starts": 55898
+      },
+      {
+        "month": "2026-02",
+        "detached_subdivision": 9893,
+        "owner_occupied": 15501,
+        "all_starts": 57630
+      },
+      {
+        "month": "2026-03",
+        "detached_subdivision": 10806,
+        "owner_occupied": 16659,
+        "all_starts": 63495
+      },
+      {
+        "month": "2026-04",
+        "detached_subdivision": 10156,
+        "owner_occupied": 16296,
+        "all_starts": 62569
+      },
+      {
+        "month": "2026-05",
+        "detached_subdivision": 9824,
+        "owner_occupied": 15708,
+        "all_starts": 57877
+      },
+      {
+        "month": "2026-06",
+        "detached_subdivision": 10861,
+        "owner_occupied": 18553,
+        "all_starts": 66344
+      },
+      {
+        "month": "2026-07",
+        "detached_subdivision": 10578,
+        "owner_occupied": 17730,
+        "all_starts": 66439
+      }
+    ]
+  },
+  "x": {
+    "topics": [
+      {
+        "name": "一条工務店",
+        "earlier_15d": 114,
+        "later_15d": 116,
+        "change_pct": 2
+      },
+      {
+        "name": "住友林業",
+        "earlier_15d": 69,
+        "later_15d": 30,
+        "change_pct": -57
+      },
+      {
+        "name": "積水ハウス",
+        "earlier_15d": 105,
+        "later_15d": 54,
+        "change_pct": -49
+      },
+      {
+        "name": "住宅ローン",
+        "earlier_15d": 649,
+        "later_15d": 636,
+        "change_pct": -2
+      },
+      {
+        "name": "補助金",
+        "earlier_15d": 169,
+        "later_15d": 134,
+        "change_pct": -21
+      },
+      {
+        "name": "平屋",
+        "earlier_15d": 313,
+        "later_15d": 279,
+        "change_pct": -11
+      },
+      {
+        "name": "断熱",
+        "earlier_15d": 365,
+        "later_15d": 228,
+        "change_pct": -38
+      },
+      {
+        "name": "高価格帯",
+        "earlier_15d": 71,
+        "later_15d": 56,
+        "change_pct": -21
+      }
+    ]
+  },
+  "makers": {
+    "data": [
+      {
+        "name": "一条工務店",
+        "logo": "assets/brands/ichijo.svg",
+        "keyword_count_31d": 247,
+        "searched_posts": 19,
+        "target_reactions": 6,
+        "unique_authors": 5,
+        "positive": 0,
+        "negative": 0,
+        "mixed": 0,
+        "neutral": 6,
+        "change_pct": 2,
+        "reaction_summary": {
+          "positive": null,
+          "negative": null,
+          "context": "間取りや照明費用など、家づくり途中の情報共有が中心。"
+        }
+      },
+      {
+        "name": "住友林業",
+        "logo": "assets/brands/sumitomo.png",
+        "keyword_count_31d": 126,
+        "searched_posts": 19,
+        "target_reactions": 4,
+        "unique_authors": 2,
+        "positive": 4,
+        "negative": 0,
+        "mixed": 0,
+        "neutral": 0,
+        "change_pct": -45,
+        "reaction_summary": {
+          "positive": "外観や無垢床の質感を喜ぶ声と、建物への安心感に言及。",
+          "negative": null,
+          "context": null
+        }
+      },
+      {
+        "name": "積水ハウス",
+        "logo": "assets/brands/sekisui.svg",
+        "keyword_count_31d": 214,
+        "searched_posts": 19,
+        "target_reactions": 2,
+        "unique_authors": 2,
+        "positive": 0,
+        "negative": 0,
+        "mixed": 2,
+        "neutral": 0,
+        "change_pct": -24,
+        "reaction_summary": {
+          "positive": "希望の間取り、ブランドへの信頼、購入後の安心感に言及。",
+          "negative": "価格が高いという懸念。",
+          "context": "いずれも良い点と懸念を併記した投稿からの要約。"
+        }
+      },
+      {
+        "name": "ヘーベルハウス",
+        "logo": "assets/brands/hebel.svg",
+        "keyword_count_31d": 49,
+        "searched_posts": 14,
+        "target_reactions": 0,
+        "unique_authors": 0,
+        "positive": 0,
+        "negative": 0,
+        "mixed": 0,
+        "neutral": 0,
+        "change_pct": -29,
+        "reaction_summary": {
+          "positive": null,
+          "negative": null,
+          "context": null
+        }
+      },
+      {
+        "name": "ミサワホーム",
+        "logo": "assets/brands/misawa.svg",
+        "keyword_count_31d": 18,
+        "searched_posts": 14,
+        "target_reactions": 4,
+        "unique_authors": 3,
+        "positive": 1,
+        "negative": 1,
+        "mixed": 0,
+        "neutral": 2,
+        "change_pct": -62,
+        "reaction_summary": {
+          "positive": "良い点も悪い点も話す担当者への信頼が、契約の決め手になったという声。",
+          "negative": "点検で指摘した不具合の修復と連絡が遅いという不満。",
+          "context": null
+        }
+      },
+      {
+        "name": "大和ハウス",
+        "logo": "assets/brands/daiwa.png",
+        "keyword_count_31d": 1157,
+        "searched_posts": 20,
+        "target_reactions": 0,
+        "unique_authors": 0,
+        "positive": 0,
+        "negative": 0,
+        "mixed": 0,
+        "neutral": 0,
+        "change_pct": -91,
+        "reaction_summary": {
+          "positive": null,
+          "negative": null,
+          "context": null
+        }
+      },
+      {
+        "name": "セキスイハイム",
+        "logo": "assets/brands/sekisuiheim.webp",
+        "keyword_count_31d": 33,
+        "searched_posts": 15,
+        "target_reactions": 1,
+        "unique_authors": 1,
+        "positive": 0,
+        "negative": 0,
+        "mixed": 0,
+        "neutral": 1,
+        "change_pct": -26,
+        "reaction_summary": {
+          "positive": null,
+          "negative": null,
+          "context": "引き渡し日が決まったという報告が1件。"
+        }
+      },
+      {
+        "name": "パナソニック ホームズ",
+        "logo": "assets/brands/panasonic.svg",
+        "keyword_count_31d": 22,
+        "searched_posts": 15,
+        "target_reactions": 4,
+        "unique_authors": 4,
+        "positive": 1,
+        "negative": 3,
+        "mixed": 0,
+        "neutral": 0,
+        "change_pct": -69,
+        "reaction_summary": {
+          "positive": "全館空調の夏の快適さと電気代への満足。",
+          "negative": "照明計画、見積価格、雨漏り対応をめぐる不満。",
+          "context": null
+        }
+      },
+      {
+        "name": "タマホーム",
+        "logo": "assets/brands/tama.svg",
+        "keyword_count_31d": 37,
+        "searched_posts": 20,
+        "target_reactions": 8,
+        "unique_authors": 4,
+        "positive": 2,
+        "negative": 4,
+        "mixed": 1,
+        "neutral": 1,
+        "change_pct": 64,
+        "reaction_summary": {
+          "positive": "標準仕様の耐震・断熱性能や来場特典を評価する声。",
+          "negative": "見積と実費の差、設計の自由度、工期やトラブルへの懸念。",
+          "context": "別に、総額は手頃でも坪単価だけの比較は難しいという両面の声が1件。"
+        }
+      },
+      {
+        "name": "アイ工務店",
+        "logo": "assets/brands/ai.png",
+        "keyword_count_31d": 50,
+        "searched_posts": 18,
+        "target_reactions": 8,
+        "unique_authors": 5,
+        "positive": 4,
+        "negative": 2,
+        "mixed": 1,
+        "neutral": 1,
+        "change_pct": 58,
+        "reaction_summary": {
+          "positive": "契約先に選んだ声と、採光の事前確認や早めの価格見通しへの評価。",
+          "negative": "オプション価格と是正工事の手配・遅れへの不満。",
+          "context": "別に、家づくりでは施主側にも知識が必要だったという両面の声が1件。"
+        }
+      },
+      {
+        "name": "トヨタホーム",
+        "logo": "assets/brands/toyota.svg",
+        "keyword_count_31d": 191,
+        "searched_posts": 20,
+        "target_reactions": 0,
+        "unique_authors": 0,
+        "positive": 0,
+        "negative": 0,
+        "mixed": 0,
+        "neutral": 0,
+        "change_pct": -15,
+        "reaction_summary": {
+          "positive": null,
+          "negative": null,
+          "context": null
+        }
+      },
+      {
+        "name": "桧家住宅",
+        "logo": "assets/brands/hinokiya.svg",
+        "keyword_count_31d": 4,
+        "searched_posts": 3,
+        "target_reactions": 1,
+        "unique_authors": 1,
+        "positive": 1,
+        "negative": 0,
+        "mixed": 0,
+        "neutral": 0,
+        "change_pct": 0,
+        "reaction_summary": {
+          "positive": "比較検討の末に選んだという声。理由の詳しい記載はなし。",
+          "negative": null,
+          "context": null
+        }
+      },
+      {
+        "name": "スウェーデンハウス",
+        "logo": "assets/brands/swedenhouse.jpg",
+        "keyword_count_31d": 2,
+        "searched_posts": 2,
+        "target_reactions": 0,
+        "unique_authors": 0,
+        "positive": 0,
+        "negative": 0,
+        "mixed": 0,
+        "neutral": 0,
+        "change_pct": -100,
+        "reaction_summary": {
+          "positive": null,
+          "negative": null,
+          "context": null
+        }
+      }
+    ]
+  },
+  "mlit_transactions": {
+    "latest_published_period": "2026Q1",
+    "latest_published_cases": 46,
+    "latest_median_price_yen": 25500000,
+    "quarters": [
+      {
+        "period": "2024Q1",
+        "status": 200,
+        "median_price_yen": 25500000,
+        "land_and_building_published_cases": 48
+      },
+      {
+        "period": "2024Q2",
+        "status": 200,
+        "median_price_yen": 26000000,
+        "land_and_building_published_cases": 57
+      },
+      {
+        "period": "2024Q3",
+        "status": 200,
+        "median_price_yen": 31500000,
+        "land_and_building_published_cases": 50
+      },
+      {
+        "period": "2024Q4",
+        "status": 200,
+        "median_price_yen": 27000000,
+        "land_and_building_published_cases": 59
+      },
+      {
+        "period": "2025Q1",
+        "status": 200,
+        "median_price_yen": 26000000,
+        "land_and_building_published_cases": 72
+      },
+      {
+        "period": "2025Q2",
+        "status": 200,
+        "median_price_yen": 26000000,
+        "land_and_building_published_cases": 69
+      },
+      {
+        "period": "2025Q3",
+        "status": 200,
+        "median_price_yen": 30000000,
+        "land_and_building_published_cases": 56
+      },
+      {
+        "period": "2025Q4",
+        "status": 200,
+        "median_price_yen": 25000000,
+        "land_and_building_published_cases": 66
+      },
+      {
+        "period": "2026Q1",
+        "status": 200,
+        "median_price_yen": 25500000,
+        "land_and_building_published_cases": 46
+      },
+      {
+        "period": "2026Q2",
+        "status": 404,
+        "median_price_yen": null,
+        "land_and_building_published_cases": 0
+      }
+    ]
+  },
+  "observed_counts": {
+    "maker_keyword_matches_31d": 2150,
+    "sampled_posts": 198,
+    "target_reaction_candidates": 38,
+    "mlit_land_and_building_cases": 523
+  },
+  "administrative_reference": {
+    "registrations": 389437
+  }
+}
