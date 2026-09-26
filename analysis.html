@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>春の住宅受注の読み解き</title>
+<style>
+:root{
+  --page:#f4f7f8;--card:#ffffff;--ink:#183442;--ink-2:#40606d;--muted:#6c7e87;--line:#dce5e8;--grid:#e8eef0;--axis:#b9c8cd;
+  --accent:#0f6f69;--accent-soft:#e2f1ee;--y2024:#9fb8bf;--y2025:#5c8591;--y2026:#0f6f69;
+  --band:#fbeed6;--band-ink:#8a5a12;--warn-bg:#fff6e6;--warn-line:#f0dcb4;--warn-ink:#6f5220;
+  --good:#1d7a52;--bad:#b4533a;--neg:#d0674d;--ring:#ffffff;--focus:#63b4b5;--marker:#40606d;
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--cat-rate:#2a78d6;--cat-policy:#1baf7a;--cat-world:#eb6834;--cat-data:#8a9aa1;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#0e1a20;--card:#15252d;--ink:#e3eef1;--ink-2:#b9ccd2;--muted:#8fa5ad;--line:#26404a;--grid:#1f3640;--axis:#3a5864;
+  --accent:#4fc2b6;--accent-soft:#17343a;--y2024:#3f5a61;--y2025:#6f9aa5;--y2026:#4fc2b6;
+  --band:rgba(233,182,94,.13);--band-ink:#e8c07a;--warn-bg:#2a2416;--warn-line:#4a3d1f;--warn-ink:#e9cf95;
+  --good:#5cc78f;--bad:#e59373;--neg:#e0826b;--ring:#15252d;--focus:#4fc2b6;--marker:#b9ccd2;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--cat-rate:#3987e5;--cat-policy:#199e70;--cat-world:#d95926;--cat-data:#7d9099;color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --page:#0e1a20;--card:#15252d;--ink:#e3eef1;--ink-2:#b9ccd2;--muted:#8fa5ad;--line:#26404a;--grid:#1f3640;--axis:#3a5864;
+  --accent:#4fc2b6;--accent-soft:#17343a;--y2024:#3f5a61;--y2025:#6f9aa5;--y2026:#4fc2b6;
+  --band:rgba(233,182,94,.13);--band-ink:#e8c07a;--warn-bg:#2a2416;--warn-line:#4a3d1f;--warn-ink:#e9cf95;
+  --good:#5cc78f;--bad:#e59373;--neg:#e0826b;--ring:#15252d;--focus:#4fc2b6;--marker:#b9ccd2;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--cat-rate:#3987e5;--cat-policy:#199e70;--cat-world:#d95926;--cat-data:#7d9099;color-scheme:dark;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;font-size:15px;line-height:1.75;padding-inline:16px;padding-block:28px 56px}
+.wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:38px}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--accent);font-weight:800}
+h1{font-size:clamp(25px,4.4vw,37px);line-height:1.32;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.lead{margin:0;color:var(--ink-2);max-width:64ch}
+h2{font-size:21px;line-height:1.45;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h3{font-size:16px;margin:0}
+.sec{display:flex;flex-direction:column;gap:14px}
+.sec>p{margin:0;max-width:68ch;color:var(--ink-2)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.keys{margin:0;padding:6px 0 0;list-style:none;display:flex;flex-direction:column}
+.keys li{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line);align-items:start}
+.keys li:first-child{border-top:0;padding-top:4px}
+.keys .n{font-size:12px;font-weight:800;border-radius:99px;padding:2px 10px;text-align:center;margin-top:3px;white-space:nowrap}
+.keys .n.fact{background:var(--accent-soft);color:var(--accent)}
+.keys .n.hypo{background:var(--warn-bg);color:var(--warn-ink);border:1px solid var(--warn-line)}
+.keys .n.next{background:var(--grid);color:var(--ink-2)}
+.keys b{display:block;font-size:16.5px;line-height:1.5}
+.keys span{color:var(--ink-2);font-size:14px}
+.note{font-size:13px;color:var(--ink-2);margin:0}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.chart-head strong{font-size:15px}
+.chart-head span{font-size:12px;color:var(--muted)}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .tick{font-size:11px;fill:var(--muted);font-variant-numeric:tabular-nums}
+.chart .endlab{font-size:12px;fill:var(--ink-2);font-weight:700}
+.chart .bandlab{font-size:11px;fill:var(--band-ink);font-weight:700}
+.chart .mk{font-size:11px;fill:var(--marker);font-weight:800}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:16px;height:3px;border-radius:2px}
+.legend i.sq{width:10px;height:10px;border-radius:2px}
+.tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12px;line-height:1.6;box-shadow:0 4px 14px rgba(0,0,0,.12);white-space:nowrap;font-variant-numeric:tabular-nums;z-index:2}
+.tip b{display:block;font-size:12px}
+.tip i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fact{border-top:2px solid var(--line);padding-top:8px}
+.fact.now{border-top-color:var(--accent)}
+.fact .k{font-size:12px;color:var(--muted);font-weight:700}
+.fact .v{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.35}
+.fact .s{font-size:12px;color:var(--ink-2)}
+.controls{display:flex;flex-wrap:wrap;gap:6px}
+.controls button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:99px;padding:5px 12px;cursor:pointer}
+.controls button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--card);font-weight:700}
+.controls button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+details{border-top:1px solid var(--line);padding-top:8px}
+summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--ink-2)}
+.tscroll{overflow-x:auto;margin-top:8px}
+table{border-collapse:collapse;font-size:12.5px;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:6px 10px;border-top:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:700;background:var(--page)}
+td.up{color:var(--good);font-weight:700}
+td.down{color:var(--bad);font-weight:700}
+tr.am td{background:var(--band)}
+/* journey */
+.journey{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.step{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px;background:var(--card)}
+.step.hit{border-color:var(--accent);box-shadow:inset 0 3px 0 var(--accent)}
+.step .when{font-size:12px;font-weight:800;color:var(--accent)}
+.step .what{font-size:15px;font-weight:800;line-height:1.45}
+.step .sig{font-size:12.5px;color:var(--ink-2);line-height:1.6}
+/* lead table meter */
+.leadlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.leadlist li{padding:10px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.leadlist li:first-child{border-top:0}
+.leadlist .lt{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.leadlist .lt b{font-size:15px}
+.leadlist .chip{font-size:12px;font-weight:800;color:var(--accent);background:var(--accent-soft);border-radius:99px;padding:1px 9px}
+.leadlist .lm{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.leadlist .ls{color:var(--muted)}
+.leadlist .lr{margin:0;font-size:13.5px;color:var(--ink-2)}
+.meter{display:inline-block;width:64px;height:8px;border-radius:4px;background:var(--grid);vertical-align:middle;margin-right:8px;position:relative;overflow:hidden}
+.meter i{position:absolute;left:0;top:0;bottom:0;border-radius:4px}
+/* psychology */
+.psy{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.psy .card:last-child:nth-child(odd){grid-column:1/-1}
+.psy .card h3{margin-bottom:6px}
+.psy .card p{margin:0;font-size:14px;color:var(--ink-2)}
+.psy .card .ev{margin-top:8px;font-size:12.5px;color:var(--muted)}
+.turn{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);border-radius:12px;padding:12px 14px;font-size:14px}
+/* timeline events */
+.events{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.events li{display:grid;grid-template-columns:118px 104px 1fr;gap:4px 12px;padding:9px 0;border-top:1px solid var(--line);align-items:baseline}
+.events li:first-child{border-top:0}
+.events li.am{background:var(--band);margin-inline:-18px;padding-inline:18px}
+.events .d{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.events .c{font-size:11.5px;font-weight:700;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.events .c i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.events .t{font-size:14px;line-height:1.6}
+.events .t a{color:var(--accent);font-size:12px;margin-left:6px;white-space:nowrap}
+.mklist{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 16px;font-size:12.5px;color:var(--ink-2)}
+.mklist b{color:var(--marker)}
+.duo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+/* coverage */
+.tl{display:grid;grid-template-columns:minmax(118px,170px) 1fr;gap:10px 14px;align-items:center}
+.tl-head{grid-column:2;display:grid;grid-template-columns:repeat(9,1fr);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tl-head span{text-align:center}
+.tl-label{font-size:13px;font-weight:700;line-height:1.45}
+.tl-label small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+.tl-track{position:relative;height:26px;border-radius:6px;background:var(--grid)}
+.tl-band{position:absolute;top:-4px;bottom:-4px;background:var(--band);border-radius:4px}
+.tl-bar{position:absolute;top:5px;height:16px;border-radius:4px;background:var(--accent)}
+.tl-bar.thin{background:var(--y2025)}
+.tl-note{grid-column:2;font-size:12px;color:var(--band-ink);margin-top:-4px}
+.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px;max-width:70ch}
+.steps b{color:var(--ink)}
+.outlook ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:14px}
+footer a{color:var(--accent)}
+footer p{margin:0}
+@media (max-width:760px){
+  .journey{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .psy{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .facts{grid-template-columns:1fr}
+  .card{padding:14px 12px 12px}
+  .tl{grid-template-columns:1fr}
+  .tl-head,.tl-note{grid-column:1}
+  .events li{grid-template-columns:1fr;gap:2px}
+  .events li.am{margin-inline:-12px;padding-inline:12px}
+  .mklist{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="stylesheet" href="analysis-tabs.css">
+</head>
+<body>
+
+<div class="wrap">
+<nav class="view-tabs" aria-label="画面切り替え">
+  <a href="./"><span>市場ダッシュボード</span></a>
+  <a href="analysis.html" aria-current="page"><span>春の再分析・今後の見通し</span></a>
+</nav>
+<header>
+  <span class="eyebrow">住宅購入マインド指数　検証レポート　2026年9月26日</span>
+  <h1>4〜5月の住宅受注を、数か月前の動きから読み直す</h1>
+  <p class="lead">お客様の「今年（2026年）の4〜5月に住宅購入者が増えた」というお話から出発し、①今年の受注の実態、②受注の数か月前に何が動いていたか、③住宅購入マインド指数がそれを捉えられたか、を公的データ・各社の公式発表・Xの投稿数（2024年1月から）で確かめました。確認できた事実と、まだ確かめていない仮説を分けて書いています。数値は元データから再計算して確認しました。</p>
+</header>
+<section class="forecast-overview" aria-labelledby="forecast-answer">
+  <h2 id="forecast-answer">今後の分析・予想はできる？</h2>
+  <p class="forecast-verdict">市場の変化を読み解く分析はできます。<span>販売件数を当てる予想は、まだ検証が必要です。</span></p>
+  <div class="forecast-grid">
+    <article><h3>✓ 今できる分析</h3><p>メーカーの受注、Xの話題、着工、金利を時系列で比べ、何が先に動き、何が後に出たかを確認します。</p></article>
+    <article><h3>△ 予想は参考段階</h3><p>金利や制度、物価への不安から複数の筋道を考えられます。ただし、投稿数だけで来月の販売数は決めません。</p></article>
+    <article><h3>→ 予想に進む条件</h3><p>月別の問い合わせ・来場・契約実数を照合し、後から期間を選ばず、単純な予想より当たるかを毎月確かめます。</p></article>
+  </div>
+  <p class="forecast-evidence"><strong>今回の答え合わせ：</strong>住宅ローンのX投稿から作った予想の外れは約4.2ポイント。過去の平均をそのまま使う方法の約3.3ポイントより大きく、先読みの根拠にはなりませんでした。</p>
+  <nav class="report-jump" aria-label="再分析の目次">
+    <a href="#s-keys">まず結論</a><a href="#s-orders">受注の実態</a><a href="#s-journey">数か月前の動き</a><a href="#s-outlook">今後の材料</a><a href="#s-fix">改善の進め方</a>
+  </nav>
+</section>
+
+
+<section class="sec" aria-labelledby="s-keys">
+  <h2 id="s-keys">要点</h2>
+  <div class="card"><ul class="keys"><li><span class="n fact">事実</span><div><b>4〜5月は、受注が前年を上回った会社が多かった。ただし購入者数の増加までは確認できない</b><span>大手10社の公式発表で、前年を上回ったのは4月7社・5月8社。2年前（2024年）と比べると4月6社・5月5社で、2025年の同じ月が低かった分、前年比が大きく出ています。受注は金額が中心のため、件数や購入者数は分かりません。8月は前年を上回った会社が3社に減りました。</span></div></li><li><span class="n fact">事実</span><div><b>今の指数の画面では、4〜5月の動きを捉えられない</b><span>Xの話題を直近1か月だけ数え、前の15日と比べる作りのためです。メーカー名の投稿は5月に増えましたが、受注とほぼ同じ時期に動いており、先回りの材料としては確認できていません。</span></div></li><li><span class="n fact">事実</span><div><b>Xの「住宅ローン」の話題で受注を先読みすることは、今の時点ではできない</b><span>この話題は2025年10〜12月に前年の2倍前後に増え、全期間で見ると約5か月後の受注と似た動きでした。しかし2025年のデータだけで作った簡単な予測は、2026年の受注を「2025年の平均値をそのまま使う」より外しました（外れの大きさ4.2ポイント対3.3ポイント）。</span></div></li><li><span class="n hypo">仮説</span><div><b>「上がる前に」「制度があるうちに」「株高の安心」が重なる時期だった</b><span>日銀の利上げ（12月）、変動金利の引き上げ（3・4月）、減税延長の決定（12月）、新しい補助金（3月末）、衆院選後の株高、原油高・円安が同じ時期に並びました。時期が重なったことは事実ですが、それが購入を増やした原因かどうかは確かめていません。</span></div></li><li><span class="n next">次の一手</span><div><b>答え合わせの材料をそろえて、確かめ直す</b><span>御社の月別の実数（問い合わせ・来場・契約）、時間差を先に決めた試し予測の継続、投稿の中身の確認の3つです。</span></div></li></ul></div>
+</section>
+
+<section class="sec" aria-labelledby="s-orders">
+  <h2 id="s-orders">今年の受注：前年超えの会社は多いが、2年前と比べると4〜5月は半数ほど</h2>
+  <p>大手10社（積水ハウス・住友林業・大和ハウス・ヘーベルハウス・セキスイハイム・タマホーム・ミサワホーム・パナソニック ホームズ・桧家住宅・ヤマダホームズ）が毎月公表している受注の前年同月比を、真ん中の値（中央値）でまとめました。グラフに触れると、前年・2年前を上回った会社の数も見られます。</p>
+  <div class="card stack">
+    <div class="chart-head"><strong>大手10社の受注（前年同月比の中央値）</strong><span>月ごと・%</span></div>
+    <div class="chart" id="o-chart"></div>
+    <div class="facts" id="o-facts"></div>
+    <details><summary>数値を表で見る（前年を上回った会社の数・2年前との比較）</summary><div class="tscroll" id="o-table"></div></details>
+  </div>
+  <p class="note">2025年の春は受注が前年を下回る会社が多く、比べる基準が低かったため、前年比だけでは増え方が大きく見えます。そこで2年前（2024年）とも比べました（前年比を2年分掛け合わせた近い値）。「前年を上回った会社の数」は会社の数であって、契約の件数や購入者数が増えた証拠ではありません。会社によって受注の数え方（金額・契約高、戸建だけか住宅全体か）が違い、足し合わせることもできません。金額には建築費の値上がり分も含まれます。</p>
+</section>
+
+<section class="sec" aria-labelledby="s-journey">
+  <h2 id="s-journey">受注の数か月前に何が動いたか：時間差の候補（未検証）</h2>
+  <p>注文住宅は、きっかけ → 情報集め → 見学・比較 → 資金計画 → 契約と、段階を踏んで決まると考えられます（各段階の期間は、このデータでは確かめていません）。この考え方に沿って、SNSの話題や株価・金利が受注の何か月前に似た動きをしたかを調べました。下の一覧は、同じ時期に動いた「候補」で、どれも確かめられた関係ではありません。</p>
+  <div class="journey" id="journey"></div>
+  <div class="card stack">
+    <div class="chart-head"><strong>どの材料が、受注の何か月前に動いた「候補」か</strong><span>2025年1月〜2026年8月の毎月の動きから計算</span></div>
+    <div id="lead-table"></div>
+    <p class="note">「重なり」は、2つの動きの似かたを−1〜+1で表した目安です（+1に近いほど同じ向き、−1に近いほど逆向き、0は関係なし。受注は10社の前年比の中央値）。月数は、前後6か月の中から一番よく重なる月を後から選んだもので、たまたま合った可能性があります。期間を分けたり受注の測り方を変えたりすると強さが大きく変わります（9社のうち前年を上回った社数で測ると全期間+0.67、2025年分+0.20・2026年分+0.88）。さらに、2025年6〜12月のデータだけで「住宅ローンの話題→5か月後の受注」の関係を作り、2026年1〜8月を当てる簡易検算をしたところ、外れの大きさは4.2ポイントで、「2025年6〜12月の平均値をそのまま使う」単純な基準の3.3ポイントを上回れませんでした（しかも月数を後から選んでいる分、この検算は有利な条件です）。</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="s-flow">
+  <h2 id="s-flow">話題・受注・金利の時期の重なりを、1本の時間軸で見る</h2>
+  <p>①Xの「住宅ローン」の話題は2025年後半に前年の1.7〜2.5倍に増え、12月（日銀の利上げの月）が最大でした。②大手の受注は、2026年1〜7月に前年を上回る会社が多い月が続きました。③フラット35は1月2.08%から6月3.21%へ上昇。住宅ローンの話題は4月から前年を下回り、8月には前年を上回った会社が3社に減りました。時期の重なりは見えますが、これだけで原因とは言えず、先読みにも使えないことが簡易検算で分かっています。</p>
+  <div class="card stack">
+    <div class="chart-head"><strong>① Xの「住宅ローン」の話題（前年同月比）</strong><span>%</span></div>
+    <div class="chart" id="f1"></div>
+    <div class="chart-head"><strong>② 大手10社の受注（前年同月比の中央値）</strong><span>%</span></div>
+    <div class="chart" id="f2"></div>
+    <div class="chart-head"><strong>③ 金利（フラット35と日銀の政策金利）</strong><span>%</span></div>
+    <div class="legend" id="f3-legend"></div>
+    <div class="chart" id="f3"></div>
+    <ul class="mklist" id="mklist"></ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="s-psy">
+  <h2 id="s-psy">買い手の背中を押したと考えられる5つの心理（仮説）</h2>
+  <p>注文住宅は大きな買い物なので、ニュースを見てすぐ買うというより、いくつかの気持ちが重なって「今決めよう」に変わっていくと考えられます。今年は次の5つの気持ちに関わる出来事が同じ時期に並びました。どれも仮説で、実際に購入を増やした原因かどうかは、来場や契約の記録で確かめる必要があります。</p>
+  <div class="psy"><div class="card"><h3>「上がる前に決めたい」</h3><p>一般に、人は得をすることより損をしないことを強く意識すると言われます。金利や建築費が「これからもっと上がる」と感じると、先送りが損に見えやすくなります。</p><p class="ev">日銀の利上げ（2025年12月19日）→ 大手行が変動金利を引き上げ（3月1日・4月1日）。フラット35は1月2.08%→5月2.71%。リクルートの調査（注文住宅を検討中の全国1,378人・インターネット調査・2025年7月25日〜8月7日）では、「今が建て時」と答えた人が68.8%、その理由は「今後は建築費用が上がると思うから」34.6%・「今後は金利が上がると思うから」28.3%でした。</p></div><div class="card"><h3>「制度があるうちに」</h3><p>期限や先着順があると「今動かないと取り逃す」と感じやすく、制度が続くと決まることも動くきっかけになると考えられます。</p><p class="ev">住宅ローン減税の5年延長を2025年12月26日に閣議決定。3月31日から新しい補助金（新築で最大110万円・予算がなくなり次第終了）。</p></div><div class="card"><h3>「買っても大丈夫」</h3><p>株価が上がり政治が安定すると、将来への不安が和らぎ、大きな買い物に踏み切りやすくなると考えられます。</p><p class="ev">2月8日の衆院選で与党が大勝。日経平均は2月末58,850円、5月末66,330円、6月末70,062円。</p></div><div class="card"><h3>「これから高くなる」</h3><p>物の値段が上がるニュースが続くと、「今が一番安い」と感じやすくなると考えられます。</p><p class="ev">同じリクルートの調査で、注文住宅の建築費用（土地代を除く、建てた人1,342人の平均）は3,488万円と前年より73万円上がり、過去10年で最も高くなっていました。3月からは中東情勢の緊迫化で原油が急騰（北海原油の月平均 2月71ドル→4月117ドル）。円安も1ドル158〜159円。</p></div><div class="card"><h3>「待っていた人が動いた」</h3><p>2025年に決めるのを先に延ばした人が、2026年に動き出した可能性があります。</p><p class="ev">2025年の春は受注・着工とも前年を下回る月が多く（着工については業界紙が、法改正前の駆け込みの反動と説明）、その分、今年の前年比は大きく見えます。様子を見ていた人が実際に戻ったかどうかは、このデータでは確認できません。</p></div></div>
+  <div class="turn"><b>転換点の読み（仮説）：</b>6月に日銀が1.0%へ利上げし、フラット35も3.21%に上がりました。その後、8月に受注が前年を上回った会社は10社中3社でした。「急いだ人は先に契約を済ませ、残った人は払えるかの不安が勝った」という読み方もできますが、まだ1か月分の動きなので、9月以降の数字で確かめる必要があります。</div>
+</section>
+
+<section class="sec" aria-labelledby="s-events">
+  <h2 id="s-events">年表：2025年10月〜2026年9月</h2>
+  <div class="card"><ol class="events" id="events"></ol></div>
+  <div class="duo">
+    <div class="card stack"><div class="chart-head"><strong>日経平均</strong><span>月末・円</span></div><div class="chart" id="n-chart"></div></div>
+    <div class="card stack"><div class="chart-head"><strong>原油（北海ブレント）</strong><span>月平均・ドル</span></div><div class="chart" id="b-chart"></div></div>
+    <div class="card stack"><div class="chart-head"><strong>ドル円</strong><span>月平均・円</span></div><div class="chart" id="u-chart"></div></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="s-x">
+  <h2 id="s-x">メーカー名の投稿の山（5月）は、受注とほぼ同時に動いた</h2>
+  <p>指数と同じ18の検索条件で、Xの投稿数を2024年1月から数え直しました（数えただけで、投稿の中身や投稿者は保存していません）。メーカー名の投稿は、大型連休明けの5週間（5月4日〜6月7日）に4月より+63%、13社中11社が同時に増えました。投稿の中身は確認していませんが、受注とほぼ同じ時期に動いており、きっかけより結果の側に近い材料の可能性があります。グラフの上のボタンで話題を切り替えられます。</p>
+  <div class="card stack">
+    <div class="controls" id="x-controls" role="group" aria-label="表示する話題"></div>
+    <div class="legend" id="x-legend"></div>
+    <div class="chart" id="x-chart"></div>
+    <div class="facts" id="x-facts"></div>
+    <details><summary>数値を表で見る（1日あたりの投稿数）</summary><div class="tscroll" id="x-table"></div></details>
+  </div>
+  <p class="note">9月は大和ハウス1社の投稿が9月3日・4日に集中（約800件）して急増したため、グラフは8月までにしています。1社の出来事だけで増えることがあるので、「何社が同時に増えたか」で市場全体の動きと見分けます。投稿数は購入者数ではなく、広告や業者の投稿も含みます。</p>
+</section>
+
+<section class="sec" aria-labelledby="s-cover">
+  <h2 id="s-cover">今の指数の画面が、この波を捉えられない理由</h2>
+  <p>今の画面は、Xの話題を直近31日（8月24日〜9月24日）だけで数え、「直近15日」と「その前の15日」を比べる作りです。そのため、①数か月前の動きを見ていない、②季節や前年と比べる仕組みがない、③お金の話題と会社名の話題の違いを区別していない、の3点で、4〜5月の動きを捉えられませんでした。国の着工統計は7月分まで、一宮市の取引価格は1〜3月分までしか公表されていません（9月26日時点）。</p>
+  <div class="card"><div class="tl" id="timeline"></div></div>
+</section>
+
+<section class="sec" aria-labelledby="s-outlook">
+  <h2 id="s-outlook">これからの材料（秋以降）</h2>
+  <div class="card outlook"><ul><li><b>ブレーキになりうる材料は増えています（事実）。</b>フラット35は9月3.46%、日銀は9月18日に1.25%へ利上げ、大手行は9月1日に変動金利を再び引き上げました。原油も9月に再び上昇しています（月平均113ドル）。8月に受注が前年を上回った会社は3社でした。</li><li><b>支えになりうる材料も残っています（事実）。</b>住宅ローン減税の延長と補助金は続き、株価も高い水準です。</li><li><b>Xの話題を使った先読みはしません。</b>簡易検算で単純な基準を上回れなかったためです。秋の受注がどうなるかは、材料の並びから断定できません。</li><li><b>確かめる時期：</b>各社の9月の受注（10月上旬に公表）、10月のフラット35金利（10月1日に公表）。</li></ul></div>
+</section>
+
+<section class="sec" aria-labelledby="s-fix">
+  <h2 id="s-fix">今後の分析をどう進めるか</h2>
+  <ol class="steps"><li><b>比べる相手を「例年の同じ時期」にする。</b>今の「直近15日と前の15日」では季節の動きを拾えません。今回、2024年からの土台ができたので、すぐ切り替えられます。</li><li><b>「何社が同時に増えたか」を合図にする。</b>5月は13社中11社のメーカー名の投稿が同時に増えました。9月の大和ハウスのような1社だけの急増は、その会社の出来事として分けます。</li><li><b>先読みの候補は、試し予測で基準を上回るまで「参考表示」にとどめる。</b>住宅ローン・補助金の話題、株価、金利の変化などは、表示はしても、予測としては使いません。</li><li><b>「何が増えたか」を決める。</b>御社の月別の実数（問い合わせ・来場・契約、地域、新築か中古か）をいただき、答え合わせの基準にします。</li><li><b>時間差を先に決めて、試し予測を続ける。</b>過去のデータだけで時間差を決め、その後の月を当てられるか、季節と前年の動きだけで見た単純な基準より当たるかを、毎月確かめます。</li><li><b>投稿の内容を確かめる。</b>件数だけでは広告・業界の投稿・購入を考えている人を区別できません。一部の投稿を確認し、広告・業界の投稿・購入を考えている人の声を分けます。</li><li><b>順番を別の根拠で確かめる。</b>発表日 → 検討 → 来場 → 契約の順番を、展示場の来場者数や住宅ローンの事前審査の件数などで確かめます。</li></ol>
+</section>
+
+<section class="sec" aria-labelledby="s-appx">
+  <h2 id="s-appx">参考：国の着工統計と、会社別の受注</h2>
+  <p>国の着工統計（全国）には、4〜5月の山は出ていません。着工は工事を始めた数で、契約した月ではありません。2025年の春は着工が大きく落ち込んでいたため（業界紙は、法改正前の駆け込みの反動と説明）、前年比だけが大きく見えます（持家の4〜5月は前年比+25%、2年前比−9%）。</p>
+  <div class="card stack">
+    <div class="controls" id="s-controls" role="group" aria-label="表示する種類"></div>
+    <div class="legend" id="s-legend"></div>
+    <div class="chart" id="s-chart"></div>
+    <div class="facts" id="s-facts"></div>
+  </div>
+  <p>会社ごとに見ると、受注の増減とXの投稿の増減はほとんど連動していません。指数は会社ごとの売れ行きではなく、市場全体の温度計として使うのが適切です。</p>
+  <div class="card"><div class="tscroll" id="m-table"></div></div>
+  <p class="note">受注は各社の公式発表（速報値・前年同月比）。大和ハウスは注文住宅の契約高（個別）、ヘーベルハウスは戸建と集合住宅の合計、セキスイハイムは住宅全体、積水ハウスは2026年2月から区分の見直しがあります。一条工務店・アイ工務店・トヨタホーム・スウェーデンハウスは月ごとの公式発表がないため載せていません。</p>
+</section>
+
+<footer><p><b>出典</b></p><p>大手10社の受注：各社の公式IR（月次受注速報・契約状況）。積水ハウス、住友林業、大和ハウス工業、旭化成（ヘーベルハウス）、積水化学工業（セキスイハイム）、タマホーム、ミサワホーム、パナソニック ホームズ、ヒノキヤグループ（桧家住宅）、ヤマダホームズ。</p><p>Xの投稿数：X公式の件数集計（2024年1月1日〜2026年9月24日、日付の区切りは協定世界時）。指数と同じ18の検索条件。投稿の中身・投稿者は保存していません。同じ投稿が複数の条件に入ることがあります（延べ件数）。</p><p>金利：<a href="https://www.boj.or.jp/mopo/mpmdeci/index.htm" target="_blank" rel="noopener">日本銀行</a>、住宅金融支援機構【フラット35】、<a href="https://www.mof.go.jp/jgbs/reference/interest_rate/index.htm" target="_blank" rel="noopener">財務省 国債金利情報</a>。</p><p>株価・為替・原油：日経平均・ドル円・北海ブレント（<a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">米セントルイス連銀の公開統計</a>）。</p><p>住宅政策：<a href="https://www.mlit.go.jp/report/press/house02_hh_000241.html" target="_blank" rel="noopener">国土交通省（住宅ローン減税）</a>、<a href="https://mirai-eco2026.mlit.go.jp/" target="_blank" rel="noopener">みらいエコ住宅2026事業</a>。着工：国土交通省 建築着工統計調査。</p><p>買い手の意識と建築費：<a href="https://suumo-research.com/work/resident-insights/resident-insights-1799/" target="_blank" rel="noopener">リクルート「2025年 注文住宅動向・トレンド調査」</a>（2025年7月25日〜8月7日、インターネット調査、建築者1,342人・検討者1,378人）。原油高の影響：<a href="https://www.tdb.co.jp/report/economic/20260406-tdbreview-no45/" target="_blank" rel="noopener">帝国データバンク</a>。業界の受注集計：<a href="https://www.housenews.jp/house/36137" target="_blank" rel="noopener">住宅産業新聞</a>。</p><p>「重なり」（相関）は約1年半分のデータから見た目安で、原因や予測の力を示すものではありません。主要な数値は元データから再計算し、比較条件も確認しました。作成：株式会社バンテックス（2026年9月26日）。</p></footer>
+</div>
+
+<script type="application/json" id="data">{"orders_monthly":{"2025-01":{"median_yoy":0.0,"up":4,"total":10,"median_vs_2y":0.1},"2025-02":{"median_yoy":-0.5,"up":4,"total":10,"median_vs_2y":2.0},"2025-03":{"median_yoy":5.0,"up":6,"total":10,"median_vs_2y":7.1},"2025-04":{"median_yoy":1.0,"up":5,"total":10,"median_vs_2y":-1.7},"2025-05":{"median_yoy":-3.0,"up":3,"total":10,"median_vs_2y":1.9},"2025-06":{"median_yoy":-1.5,"up":4,"total":10,"median_vs_2y":-2.0},"2025-07":{"median_yoy":2.5,"up":7,"total":10,"median_vs_2y":5.5},"2025-08":{"median_yoy":-4.5,"up":4,"total":10,"median_vs_2y":6.6},"2025-09":{"median_yoy":0.5,"up":5,"total":10,"median_vs_2y":7.8},"2025-10":{"median_yoy":4.5,"up":5,"total":10,"median_vs_2y":9.4},"2025-11":{"median_yoy":5.5,"up":6,"total":10,"median_vs_2y":8.3},"2025-12":{"median_yoy":5.5,"up":6,"total":10,"median_vs_2y":4.3},"2026-01":{"median_yoy":1.1,"up":7,"total":10,"median_vs_2y":14.0},"2026-02":{"median_yoy":1.5,"up":6,"total":10,"median_vs_2y":0.5},"2026-03":{"median_yoy":5.0,"up":6,"total":10,"median_vs_2y":8.3},"2026-04":{"median_yoy":5.0,"up":7,"total":10,"median_vs_2y":7.0},"2026-05":{"median_yoy":3.0,"up":8,"total":10,"median_vs_2y":0.5},"2026-06":{"median_yoy":7.5,"up":7,"total":10,"median_vs_2y":7.0},"2026-07":{"median_yoy":2.0,"up":5,"total":10,"median_vs_2y":7.4},"2026-08":{"median_yoy":-4.0,"up":3,"total":10,"median_vs_2y":-5.2}},"two_year_up":{"2025-01":5,"2025-02":5,"2025-03":7,"2025-04":4,"2025-05":7,"2025-06":5,"2025-07":6,"2025-08":7,"2025-09":8,"2025-10":7,"2025-11":7,"2025-12":6,"2026-01":7,"2026-02":5,"2026-03":7,"2026-04":6,"2026-05":5,"2026-06":8,"2026-07":7,"2026-08":3},"orders_facts":[{"k":"前年を上回った会社","v":"4月7社・5月8社","s":"10社のうち（1〜7月は毎月5〜8社）"},{"k":"2年前（2024年）を上回った会社","v":"4月6社・5月5社","s":"2025年の低さを除いて見ると、半数ほど","now":true},{"k":"8月","v":"3社・−4%","s":"前年を上回った会社・中央値","now":true}],"journey":[{"when":"約5か月前（候補）","what":"きっかけ（お金の心配）","sig":"「住宅ローン」「補助金」の話題が増える。株価が上がる","hit":true},{"when":"約2か月前（候補）","what":"性能や費用を比べる","sig":"「断熱」の話題が増える"},{"when":"ほぼ同じ時期","what":"会社を決める","sig":"メーカー名の投稿が増える"},{"when":"ここ","what":"契約","sig":"大手の受注（1〜7月は前年を上回る会社が多い月が続いた）"},{"when":"数か月後","what":"工事が始まる","sig":"国の着工統計（工事を始めた月の数）"}],"lead_rows":[{"label":"Xの「住宅ローン」の話題","k":5,"r":0.65,"read":"受注の約5か月前に似た動きをした候補。簡易検算では単純な基準を上回れず、予測には使えない","when":"約5か月前","word":"強め","split":"2025年分 +0.85・2026年分 +0.56"},{"label":"Xの「補助金」の話題","k":5,"r":0.49,"read":"受注の約5か月前に似た動きをした候補。未検証","when":"約5か月前","word":"中くらい","split":"2025年分 +0.55・2026年分 +0.41"},{"label":"日経平均の上昇（3か月）","k":5,"r":0.44,"read":"受注の約5か月前に似た動きをした候補。未検証","when":"約5か月前","word":"中くらい","split":"2025年分 +0.59・2026年分 +0.32"},{"label":"Xの「断熱」の話題","k":2,"r":0.45,"read":"受注の約2か月前に似た動きをした候補。未検証","when":"約2か月前","word":"中くらい","split":"2025年分 +0.36・2026年分 +0.60"},{"label":"Xのメーカー名の投稿","k":1,"r":0.49,"read":"受注とほぼ同じ時期に動いた。先回りの材料としては確認できていない","when":"約1か月前","word":"中くらい","split":"2025年分 +0.16・2026年分 +0.81"},{"label":"フラット35金利の上昇（3か月）","k":6,"r":-0.35,"read":"上昇の約6か月後に受注が弱い月と重なった候補（逆向き）。未検証","when":"約6か月前","word":"弱め（逆向き）","split":"2025年分 -0.43・2026年分 -0.57"}],"loan_yoy":{"2025-01":-1.9,"2025-02":-9.9,"2025-03":-20.8,"2025-04":31.7,"2025-05":81.0,"2025-06":82.8,"2025-07":68.9,"2025-08":107.5,"2025-09":80.2,"2025-10":106.4,"2025-11":118.8,"2025-12":145.7,"2026-01":71.8,"2026-02":53.2,"2026-03":10.7,"2026-04":-21.1,"2026-05":-35.4,"2026-06":8.5,"2026-07":-25.9,"2026-08":-9.7},"markers":[{"month":"2025-12","label":"①","text":"2025年12月　日銀が0.75%に利上げ"},{"month":"2026-03","label":"②","text":"2026年3月　変動金利の引き上げ・原油急騰・補助金開始"},{"month":"2026-06","label":"③","text":"2026年6月　日銀が1.0%に利上げ・フラット35が3.21%に"},{"month":"2026-09","label":"④","text":"2026年9月　日銀が1.25%に利上げ・変動金利を再引き上げ"}],"flat35":{"2025-01":1.86,"2025-02":1.89,"2025-03":1.94,"2025-04":1.94,"2025-05":1.82,"2025-06":1.89,"2025-07":1.84,"2025-08":1.87,"2025-09":1.89,"2025-10":1.89,"2025-11":1.9,"2025-12":1.97,"2026-01":2.08,"2026-02":2.26,"2026-03":2.25,"2026-04":2.49,"2026-05":2.71,"2026-06":3.21,"2026-07":3.14,"2026-08":3.29,"2026-09":3.46},"policy":{"2025-01":0.5,"2025-02":0.5,"2025-03":0.5,"2025-04":0.5,"2025-05":0.5,"2025-06":0.5,"2025-07":0.5,"2025-08":0.5,"2025-09":0.5,"2025-10":0.5,"2025-11":0.5,"2025-12":0.75,"2026-01":0.75,"2026-02":0.75,"2026-03":0.75,"2026-04":0.75,"2026-05":0.75,"2026-06":1.0,"2026-07":1.0,"2026-08":1.0,"2026-09":1.25},"events":[{"date_label":"2025年10〜12月","cat":"data","cat_label":"データ","text":"Xの「住宅ローン」の話題が前年の2倍前後に（10月+106%・11月+119%・12月+146%）"},{"date_label":"2025年12月19日","cat":"rate","cat_label":"金利・市場","text":"日銀が政策金利を0.5%から0.75%に引き上げ","url":"https://www.boj.or.jp/mopo/mpmdeci/mpr_2025/k251219a.pdf"},{"date_label":"2025年12月26日","cat":"policy","cat_label":"住宅政策","text":"住宅ローン減税の5年延長（2030年入居まで）を閣議決定。中古住宅の条件も緩和","url":"https://www.mlit.go.jp/report/press/house02_hh_000241.html"},{"date_label":"2026年2月8日","cat":"world","cat_label":"世界・政治","text":"衆院選で与党が大勝。2月末の日経平均は58,850円に上昇","url":"https://www.nikkei.com/article/DGXZQOUA0861M0Y6A200C2000000/"},{"date_label":"2026年3月1日","cat":"rate","cat_label":"金利・市場","text":"三菱UFJ・三井住友が住宅ローンの変動金利を引き上げ（2月27日発表）","url":"https://www.nikkei.com/article/DGXZQOUB272AG0X20C26A2000000/"},{"date_label":"2026年3月","cat":"world","cat_label":"世界・政治","text":"中東情勢の緊迫化で原油が急騰（北海原油の月平均 2月71ドル→3月103ドル）。企業の景況感も悪化","url":"https://www.tdb.co.jp/report/economic/20260406-tdbreview-no45/"},{"date_label":"2026年3月31日","cat":"policy","cat_label":"住宅政策","text":"新しい補助金「みらいエコ住宅2026」の受付開始（新築で最大110万円・予算がなくなり次第終了）","url":"https://mirai-eco2026.mlit.go.jp/"},{"date_label":"2026年4月1日","cat":"rate","cat_label":"金利・市場","text":"みずほ・三井住友信託・りそななどが変動金利を引き上げ","url":"https://www.nikkei.com/article/DGXZQOUB3118Z0R30C26A3000000/","am":true},{"date_label":"2026年4〜5月","cat":"data","cat_label":"データ","am":true,"text":"大手10社の受注：4月は7社、5月は8社が前年超え。フラット35は4月2.49%→5月2.71%"},{"date_label":"2026年5月","cat":"rate","cat_label":"金利・市場","am":true,"text":"日経平均が最高値を更新（5月末66,330円）","url":"https://fred.stlouisfed.org/series/NIKKEI225"},{"date_label":"2026年6月16日","cat":"rate","cat_label":"金利・市場","text":"日銀が1.0%に利上げ（約30年ぶりの水準）。フラット35は6月3.21%に急上昇","url":"https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/k260616a.pdf"},{"date_label":"2026年8月","cat":"data","cat_label":"データ","text":"大手10社で受注が前年を上回った会社が3社に減少（中央値−4%）"},{"date_label":"2026年9月1日","cat":"rate","cat_label":"金利・市場","text":"三菱UFJ・三井住友が変動金利を再び引き上げ","url":"https://www.nikkei.com/article/DGXZQOUB2527T0V20C26A8000000/"},{"date_label":"2026年9月18日","cat":"rate","cat_label":"金利・市場","text":"日銀が1.25%に利上げ（1995年以来の高さ）。フラット35は9月3.46%","url":"https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/k260918a.pdf"},{"date_label":"2026年9月","cat":"world","cat_label":"世界・政治","text":"原油が再び上昇（9月平均113ドル）","url":"https://fred.stlouisfed.org/series/DCOILBRENTEU"}],"nikkei":{"2025-07":41069.82,"2025-08":42718.47,"2025-09":44932.63,"2025-10":52411.34,"2025-11":50253.91,"2025-12":50339.48,"2026-01":53322.85,"2026-02":58850.27,"2026-03":51063.72,"2026-04":59284.92,"2026-05":66329.5,"2026-06":70062.32,"2026-07":64362.02,"2026-08":66311.93,"2026-09":66364.2},"nikkei_min":40000,"brent":{"2025-07":71.0,"2025-08":67.9,"2025-09":68.0,"2025-10":64.5,"2025-11":63.8,"2025-12":62.5,"2026-01":66.6,"2026-02":70.9,"2026-03":103.1,"2026-04":117.3,"2026-05":107.1,"2026-06":85.4,"2026-07":83.8,"2026-08":91.1,"2026-09":113.0},"usdjpy":{"2025-07":147.2,"2025-08":147.48,"2025-09":147.86,"2025-10":151.35,"2025-11":155.14,"2025-12":155.91,"2026-01":156.65,"2026-02":155.1,"2026-03":158.68,"2026-04":159.12,"2026-05":158.15,"2026-06":160.77,"2026-07":162.33,"2026-08":158.85,"2026-09":155.63},"x_series":[{"key":"メーカー13社(延べ)","label":"メーカー13社"},{"key":"住宅ローン","label":"住宅ローン"},{"key":"補助金","label":"補助金"},{"key":"断熱","label":"断熱"},{"key":"平屋","label":"平屋"},{"key":"高価格帯","label":"高価格帯"},{"key":"住宅テーマ5つ(延べ)","label":"住宅の話題5つ"}],"x":{"メーカー13社(延べ)":{"per_day":{"2024-01":20.74,"2024-02":20.72,"2024-03":13.39,"2024-04":15.0,"2024-05":15.55,"2024-06":30.9,"2024-07":22.42,"2024-08":18.32,"2024-09":19.63,"2024-10":16.74,"2024-11":19.97,"2024-12":15.97,"2025-01":21.52,"2025-02":17.93,"2025-03":16.45,"2025-04":17.03,"2025-05":15.13,"2025-06":20.7,"2025-07":26.68,"2025-08":22.39,"2025-09":29.8,"2025-10":21.39,"2025-11":26.63,"2025-12":23.19,"2026-01":28.26,"2026-02":30.46,"2026-03":29.19,"2026-04":26.23,"2026-05":39.97,"2026-06":37.33,"2026-07":32.58,"2026-08":31.03},"index":{"2024-01":113.4,"2024-02":113.3,"2024-03":73.2,"2024-04":82.0,"2024-05":85.0,"2024-06":169.0,"2024-07":122.6,"2024-08":100.2,"2024-09":107.4,"2024-10":91.6,"2024-11":109.2,"2024-12":87.3,"2025-01":115.5,"2025-02":96.2,"2025-03":88.3,"2025-04":91.4,"2025-05":81.2,"2025-06":111.1,"2025-07":143.2,"2025-08":120.2,"2025-09":159.9,"2025-10":114.8,"2025-11":142.9,"2025-12":124.5,"2026-01":96.4,"2026-02":104.0,"2026-03":99.6,"2026-04":89.5,"2026-05":136.4,"2026-06":127.4,"2026-07":111.2,"2026-08":105.9},"spring":{"2024":{"jan_mar_per_day":18.284390063033,"apr_may_per_day":15.274193548387096,"jun_jul_per_day":26.659677419354836,"apr_may_vs_jan_mar_pct":-16.5,"apr_may_vs_neighbors_pct":-32.0},"2025":{"jan_mar_per_day":18.632104454685102,"apr_may_per_day":16.081182795698926,"jun_jul_per_day":23.688709677419354,"apr_may_vs_jan_mar_pct":-13.7,"apr_may_vs_neighbors_pct":-24.0},"2026":{"jan_mar_per_day":29.305299539170505,"apr_may_per_day":33.1005376344086,"jun_jul_per_day":34.956989247311824,"apr_may_vs_jan_mar_pct":13.0,"apr_may_vs_neighbors_pct":3.0},"apr_may_2026_vs_2025_pct":105.8,"apr_may_2026_vs_2024_pct":116.7,"rank_2026":["2026-09","2026-05","2026-06","2026-07","2026-08","2026-02","2026-03","2026-01","2026-04"]}},"住宅ローン":{"per_day":{"2024-01":21.81,"2024-02":26.52,"2024-03":25.77,"2024-04":20.9,"2024-05":20.94,"2024-06":19.87,"2024-07":20.16,"2024-08":17.26,"2024-09":22.73,"2024-10":18.97,"2024-11":19.07,"2024-12":19.29,"2025-01":21.39,"2025-02":23.89,"2025-03":20.42,"2025-04":27.53,"2025-05":37.9,"2025-06":36.33,"2025-07":34.06,"2025-08":35.81,"2025-09":40.97,"2025-10":39.16,"2025-11":41.73,"2025-12":47.39,"2026-01":36.74,"2026-02":36.61,"2026-03":22.61,"2026-04":21.73,"2026-05":24.48,"2026-06":39.4,"2026-07":25.23,"2026-08":32.35},"index":{"2024-01":88.3,"2024-02":107.4,"2024-03":104.4,"2024-04":84.6,"2024-05":84.8,"2024-06":80.4,"2024-07":81.6,"2024-08":69.9,"2024-09":92.0,"2024-10":76.8,"2024-11":77.2,"2024-12":78.1,"2025-01":97.7,"2025-02":109.1,"2025-03":93.2,"2025-04":125.7,"2025-05":173.1,"2025-06":165.9,"2025-07":155.5,"2025-08":163.5,"2025-09":187.1,"2025-10":178.8,"2025-11":190.6,"2025-12":216.4,"2026-01":114.9,"2026-02":114.4,"2026-03":70.7,"2026-04":67.9,"2026-05":76.5,"2026-06":123.2,"2026-07":78.9,"2026-08":101.1},"spring":{"2024":{"jan_mar_per_day":24.699295513533556,"apr_may_per_day":20.917741935483868,"jun_jul_per_day":20.013978494623657,"apr_may_vs_jan_mar_pct":-15.3,"apr_may_vs_neighbors_pct":-6.4},"2025":{"jan_mar_per_day":21.899769585253456,"apr_may_per_day":32.71827956989247,"jun_jul_per_day":35.1989247311828,"apr_may_vs_jan_mar_pct":49.4,"apr_may_vs_neighbors_pct":14.6},"2026":{"jan_mar_per_day":31.98732718894009,"apr_may_per_day":23.108602150537635,"jun_jul_per_day":32.31290322580645,"apr_may_vs_jan_mar_pct":-27.8,"apr_may_vs_neighbors_pct":-28.1},"apr_may_2026_vs_2025_pct":-29.4,"apr_may_2026_vs_2024_pct":10.5,"rank_2026":["2026-09","2026-06","2026-01","2026-02","2026-08","2026-07","2026-05","2026-03","2026-04"]}},"補助金":{"per_day":{"2024-01":6.74,"2024-02":5.93,"2024-03":8.16,"2024-04":8.03,"2024-05":7.42,"2024-06":9.93,"2024-07":8.97,"2024-08":8.65,"2024-09":8.47,"2024-10":9.06,"2024-11":7.3,"2024-12":7.16,"2025-01":5.32,"2025-02":7.25,"2025-03":7.03,"2025-04":12.5,"2025-05":15.9,"2025-06":12.27,"2025-07":10.74,"2025-08":8.58,"2025-09":9.9,"2025-10":10.58,"2025-11":10.97,"2025-12":13.39,"2026-01":12.06,"2026-02":10.5,"2026-03":10.77,"2026-04":11.07,"2026-05":8.45,"2026-06":8.63,"2026-07":8.13,"2026-08":10.35},"index":{"2024-01":97.1,"2024-02":85.4,"2024-03":117.5,"2024-04":115.7,"2024-05":106.8,"2024-06":143.0,"2024-07":129.1,"2024-08":124.5,"2024-09":121.9,"2024-10":130.5,"2024-11":105.1,"2024-12":103.1,"2025-01":81.4,"2025-02":110.9,"2025-03":107.6,"2025-04":191.3,"2025-05":243.4,"2025-06":187.7,"2025-07":164.4,"2025-08":131.3,"2025-09":151.5,"2025-10":161.9,"2025-11":167.8,"2025-12":204.9,"2026-01":108.6,"2026-02":94.5,"2026-03":97.0,"2026-04":99.6,"2026-05":76.1,"2026-06":77.7,"2026-07":73.1,"2026-08":93.2},"spring":{"2024":{"jan_mar_per_day":6.944753429736745,"apr_may_per_day":7.726344086021506,"jun_jul_per_day":9.450537634408601,"apr_may_vs_jan_mar_pct":11.3,"apr_may_vs_neighbors_pct":-5.7},"2025":{"jan_mar_per_day":6.53494623655914,"apr_may_per_day":14.201612903225806,"jun_jul_per_day":11.504301075268817,"apr_may_vs_jan_mar_pct":117.3,"apr_may_vs_neighbors_pct":57.5},"2026":{"jan_mar_per_day":11.11290322580645,"apr_may_per_day":9.759139784946235,"jun_jul_per_day":8.381182795698924,"apr_may_vs_jan_mar_pct":-12.2,"apr_may_vs_neighbors_pct":0.1},"apr_may_2026_vs_2025_pct":-31.3,"apr_may_2026_vs_2024_pct":26.3,"rank_2026":["2026-01","2026-04","2026-03","2026-02","2026-08","2026-09","2026-06","2026-05","2026-07"]}},"断熱":{"per_day":{"2024-01":20.71,"2024-02":23.03,"2024-03":25.13,"2024-04":22.27,"2024-05":25.13,"2024-06":23.47,"2024-07":21.84,"2024-08":18.26,"2024-09":23.9,"2024-10":18.84,"2024-11":21.63,"2024-12":21.81,"2025-01":22.68,"2025-02":21.25,"2025-03":17.94,"2025-04":17.43,"2025-05":17.16,"2025-06":21.4,"2025-07":21.03,"2025-08":19.13,"2025-09":18.97,"2025-10":17.32,"2025-11":19.17,"2025-12":23.39,"2026-01":26.87,"2026-02":26.79,"2026-03":31.58,"2026-04":31.5,"2026-05":29.65,"2026-06":19.17,"2026-07":21.42,"2026-08":29.16},"index":{"2024-01":90.2,"2024-02":100.3,"2024-03":109.5,"2024-04":97.0,"2024-05":109.5,"2024-06":102.2,"2024-07":95.1,"2024-08":79.5,"2024-09":104.1,"2024-10":82.1,"2024-11":94.2,"2024-12":95.0,"2025-01":110.0,"2025-02":103.1,"2025-03":87.0,"2025-04":84.5,"2025-05":83.2,"2025-06":103.8,"2025-07":102.0,"2025-08":92.8,"2025-09":92.0,"2025-10":84.0,"2025-11":92.9,"2025-12":113.4,"2026-01":94.6,"2026-02":94.3,"2026-03":111.2,"2026-04":110.9,"2026-05":104.3,"2026-06":67.5,"2026-07":75.4,"2026-08":102.6},"spring":{"2024":{"jan_mar_per_day":22.95773081201335,"apr_may_per_day":23.69784946236559,"jun_jul_per_day":22.65268817204301,"apr_may_vs_jan_mar_pct":3.2,"apr_may_vs_neighbors_pct":3.9},"2025":{"jan_mar_per_day":20.620967741935484,"apr_may_per_day":17.29731182795699,"jun_jul_per_day":21.216129032258063,"apr_may_vs_jan_mar_pct":-16.1,"apr_may_vs_neighbors_pct":-17.3},"2026":{"jan_mar_per_day":28.412442396313367,"apr_may_per_day":30.57258064516129,"jun_jul_per_day":20.293010752688172,"apr_may_vs_jan_mar_pct":7.6,"apr_may_vs_neighbors_pct":25.5},"apr_may_2026_vs_2025_pct":76.7,"apr_may_2026_vs_2024_pct":29.0,"rank_2026":["2026-03","2026-04","2026-05","2026-08","2026-01","2026-02","2026-07","2026-06","2026-09"]}},"平屋":{"per_day":{"2024-01":13.84,"2024-02":15.62,"2024-03":15.48,"2024-04":15.8,"2024-05":14.29,"2024-06":16.83,"2024-07":18.48,"2024-08":17.1,"2024-09":16.83,"2024-10":15.55,"2024-11":16.97,"2024-12":12.58,"2025-01":13.1,"2025-02":14.43,"2025-03":13.94,"2025-04":14.87,"2025-05":18.35,"2025-06":21.53,"2025-07":15.52,"2025-08":17.48,"2025-09":20.0,"2025-10":18.81,"2025-11":19.1,"2025-12":17.48,"2026-01":18.03,"2026-02":18.71,"2026-03":20.61,"2026-04":18.17,"2026-05":14.55,"2026-06":17.87,"2026-07":17.87,"2026-08":17.19},"index":{"2024-01":92.4,"2024-02":104.3,"2024-03":103.4,"2024-04":105.5,"2024-05":95.4,"2024-06":112.4,"2024-07":123.4,"2024-08":114.1,"2024-09":112.4,"2024-10":103.8,"2024-11":113.3,"2024-12":84.0,"2025-01":94.8,"2025-02":104.4,"2025-03":100.8,"2025-04":107.6,"2025-05":132.8,"2025-06":155.8,"2025-07":112.3,"2025-08":126.5,"2025-09":144.7,"2025-10":136.1,"2025-11":138.2,"2025-12":126.5,"2026-01":94.3,"2026-02":97.9,"2026-03":107.8,"2026-04":95.0,"2026-05":76.1,"2026-06":93.4,"2026-07":93.5,"2026-08":89.9},"spring":{"2024":{"jan_mar_per_day":14.981090100111237,"apr_may_per_day":15.045161290322582,"jun_jul_per_day":17.658602150537632,"apr_may_vs_jan_mar_pct":0.4,"apr_may_vs_neighbors_pct":-7.8},"2025":{"jan_mar_per_day":13.820276497695852,"apr_may_per_day":16.61075268817204,"jun_jul_per_day":18.524731182795698,"apr_may_vs_jan_mar_pct":20.2,"apr_may_vs_neighbors_pct":2.7},"2026":{"jan_mar_per_day":19.119815668202765,"apr_may_per_day":16.357526881720432,"jun_jul_per_day":17.868817204301074,"apr_may_vs_jan_mar_pct":-14.4,"apr_may_vs_neighbors_pct":-11.6},"apr_may_2026_vs_2025_pct":-1.5,"apr_may_2026_vs_2024_pct":8.7,"rank_2026":["2026-03","2026-09","2026-02","2026-04","2026-01","2026-07","2026-06","2026-08","2026-05"]}},"高価格帯":{"per_day":{"2024-01":4.16,"2024-02":3.69,"2024-03":5.52,"2024-04":4.83,"2024-05":5.16,"2024-06":3.9,"2024-07":4.45,"2024-08":4.06,"2024-09":3.9,"2024-10":4.52,"2024-11":4.07,"2024-12":3.68,"2025-01":4.65,"2025-02":4.0,"2025-03":4.74,"2025-04":3.5,"2025-05":3.29,"2025-06":3.23,"2025-07":3.45,"2025-08":3.58,"2025-09":4.63,"2025-10":3.16,"2025-11":2.67,"2025-12":2.97,"2026-01":4.03,"2026-02":4.93,"2026-03":4.58,"2026-04":5.07,"2026-05":4.55,"2026-06":4.03,"2026-07":4.29,"2026-08":3.84},"index":{"2024-01":93.4,"2024-02":82.8,"2024-03":123.8,"2024-04":108.5,"2024-05":115.8,"2024-06":87.5,"2024-07":99.9,"2024-08":91.2,"2024-09":87.5,"2024-10":101.4,"2024-11":91.3,"2024-12":82.5,"2025-01":104.1,"2025-02":89.6,"2025-03":106.3,"2025-04":78.4,"2025-05":73.7,"2025-06":72.5,"2025-07":77.3,"2025-08":80.2,"2025-09":103.8,"2025-10":70.8,"2025-11":59.8,"2025-12":66.5,"2026-01":89.3,"2026-02":109.2,"2026-03":101.5,"2026-04":112.2,"2026-05":100.8,"2026-06":89.4,"2026-07":95.0,"2026-08":85.0},"spring":{"2024":{"jan_mar_per_day":4.455691509084168,"apr_may_per_day":4.997311827956989,"jun_jul_per_day":4.175806451612903,"apr_may_vs_jan_mar_pct":12.2,"apr_may_vs_neighbors_pct":15.8},"2025":{"jan_mar_per_day":4.462365591397849,"apr_may_per_day":3.395161290322581,"jun_jul_per_day":3.34247311827957,"apr_may_vs_jan_mar_pct":-23.9,"apr_may_vs_neighbors_pct":-13.0},"2026":{"jan_mar_per_day":4.513824884792627,"apr_may_per_day":4.80752688172043,"jun_jul_per_day":4.161827956989248,"apr_may_vs_jan_mar_pct":6.5,"apr_may_vs_neighbors_pct":10.8},"apr_may_2026_vs_2025_pct":41.6,"apr_may_2026_vs_2024_pct":-3.8,"rank_2026":["2026-04","2026-02","2026-03","2026-05","2026-07","2026-09","2026-06","2026-01","2026-08"]}},"住宅テーマ5つ(延べ)":{"per_day":{"2024-01":67.26,"2024-02":74.79,"2024-03":80.06,"2024-04":71.83,"2024-05":72.94,"2024-06":74.0,"2024-07":73.9,"2024-08":65.32,"2024-09":75.83,"2024-10":66.94,"2024-11":69.03,"2024-12":64.52,"2025-01":67.13,"2025-02":70.82,"2025-03":64.06,"2025-04":75.83,"2025-05":92.61,"2025-06":94.77,"2025-07":84.81,"2025-08":84.58,"2025-09":94.47,"2025-10":89.03,"2025-11":93.63,"2025-12":104.61,"2026-01":97.74,"2026-02":97.54,"2026-03":90.16,"2026-04":87.53,"2026-05":81.68,"2026-06":89.1,"2026-07":76.94,"2026-08":92.9},"index":{"2024-01":90.8,"2024-02":101.0,"2024-03":108.1,"2024-04":97.0,"2024-05":98.5,"2024-06":99.9,"2024-07":99.8,"2024-08":88.2,"2024-09":102.4,"2024-10":90.4,"2024-11":93.2,"2024-12":87.1,"2025-01":99.7,"2025-02":105.2,"2025-03":95.1,"2025-04":112.6,"2025-05":137.5,"2025-06":140.7,"2025-07":125.9,"2025-08":125.6,"2025-09":140.3,"2025-10":132.2,"2025-11":139.0,"2025-12":155.4,"2026-01":102.7,"2026-02":102.5,"2026-03":94.8,"2026-04":92.0,"2026-05":85.8,"2026-06":93.6,"2026-07":80.9,"2026-08":97.6},"spring":{"2024":{"jan_mar_per_day":74.03856136447905,"apr_may_per_day":72.38440860215053,"jun_jul_per_day":73.95161290322581,"apr_may_vs_jan_mar_pct":-2.2,"apr_may_vs_neighbors_pct":-2.2},"2025":{"jan_mar_per_day":67.33832565284177,"apr_may_per_day":84.22311827956989,"jun_jul_per_day":89.78655913978494,"apr_may_vs_jan_mar_pct":25.1,"apr_may_vs_neighbors_pct":7.2},"2026":{"jan_mar_per_day":95.1463133640553,"apr_may_per_day":84.60537634408601,"jun_jul_per_day":83.01774193548387,"apr_may_vs_jan_mar_pct":-11.1,"apr_may_vs_neighbors_pct":-5.0},"apr_may_2026_vs_2025_pct":0.5,"apr_may_2026_vs_2024_pct":16.9,"rank_2026":["2026-01","2026-02","2026-09","2026-08","2026-03","2026-06","2026-04","2026-05","2026-07"]}}},"maker_key":"メーカー13社(延べ)","after_gw":{"2024":{"weeks_14_18_avg":103.2,"weeks_19_23_avg":120.8,"change_pct":17.1,"makers_rising":7,"weeks_14_18":["2024-04-01","2024-05-05"],"weeks_19_23":["2024-05-06","2024-06-09"]},"2025":{"weeks_14_18_avg":120.0,"weeks_19_23_avg":110.0,"change_pct":-8.3,"makers_rising":4,"weeks_14_18":["2025-03-31","2025-05-04"],"weeks_19_23":["2025-05-05","2025-06-08"]},"2026":{"weeks_14_18_avg":185.8,"weeks_19_23_avg":302.4,"change_pct":62.8,"makers_rising":11,"weeks_14_18":["2026-03-30","2026-05-03"],"weeks_19_23":["2026-05-04","2026-06-07"]}},"coverage":[{"label":"Xの話題","sub":"今の画面：8/24〜9/24の31日間","spans":[[8,24,9,25]]},{"label":"住宅着工(国交省)","sub":"7月分まで公表・月1回","spans":[[1,1,8,1]],"thin":true},{"label":"取引価格(一宮市)","sub":"1〜3月分まで公表（4〜6月分は未公表）","spans":[[1,1,4,1]],"thin":true}],"starts_series":[{"key":"持家","label":"持家（注文住宅など）"},{"key":"分譲一戸建て","label":"分譲一戸建て（建売）"}],"starts":{"持家":{"monthly":{"2023-08":20984,"2023-09":19527,"2023-10":18078,"2023-11":17789,"2023-12":17031,"2024-01":14805,"2024-02":16311,"2024-03":16644,"2024-04":17877,"2024-05":17238,"2024-06":19183,"2024-07":19863,"2024-08":19601,"2024-09":19355,"2024-10":19706,"2024-11":19771,"2024-12":17821,"2025-01":13525,"2025-02":16272,"2025-03":22955,"2025-04":13635,"2025-05":11920,"2025-06":16030,"2025-07":17665,"2025-08":17532,"2025-09":18273,"2025-10":18081,"2025-11":17901,"2025-12":17496,"2026-01":14418,"2026-02":15501,"2026-03":16659,"2026-04":16296,"2026-05":15708,"2026-06":18553,"2026-07":17730},"spring":{"2024":{"jan_mar_per_day":15920.0,"apr_may_per_day":17557.5,"jun_jul_per_day":19523.0,"apr_may_vs_jan_mar_pct":10.3,"apr_may_vs_neighbors_pct":-0.9},"2025":{"jan_mar_per_day":17584.0,"apr_may_per_day":12777.5,"jun_jul_per_day":16847.5,"apr_may_vs_jan_mar_pct":-27.3,"apr_may_vs_neighbors_pct":-25.8},"2026":{"jan_mar_per_day":15526.0,"apr_may_per_day":16002.0,"jun_jul_per_day":18141.5,"apr_may_vs_jan_mar_pct":3.1,"apr_may_vs_neighbors_pct":-4.9},"apr_may_2026_vs_2025_pct":25.2,"apr_may_2026_vs_2024_pct":-8.9,"rank_2026":["2026-06","2026-07","2026-03","2026-04","2026-05","2026-02","2026-01"]}},"分譲一戸建て":{"monthly":{"2023-08":11589,"2023-09":11014,"2023-10":11368,"2023-11":11835,"2023-12":11470,"2024-01":9867,"2024-02":9713,"2024-03":10113,"2024-04":10579,"2024-05":10106,"2024-06":10007,"2024-07":9975,"2024-08":9578,"2024-09":10111,"2024-10":10511,"2024-11":10124,"2024-12":10513,"2025-01":8715,"2025-02":9628,"2025-03":12573,"2025-04":8169,"2025-05":7083,"2025-06":8921,"2025-07":9709,"2025-08":9476,"2025-09":10070,"2025-10":10564,"2025-11":10389,"2025-12":10638,"2026-01":9482,"2026-02":9893,"2026-03":10806,"2026-04":10156,"2026-05":9824,"2026-06":10861,"2026-07":10578},"spring":{"2024":{"jan_mar_per_day":9897.666666666666,"apr_may_per_day":10342.5,"jun_jul_per_day":9991.0,"apr_may_vs_jan_mar_pct":4.5,"apr_may_vs_neighbors_pct":4.0},"2025":{"jan_mar_per_day":10305.333333333334,"apr_may_per_day":7626.0,"jun_jul_per_day":9315.0,"apr_may_vs_jan_mar_pct":-26.0,"apr_may_vs_neighbors_pct":-22.3},"2026":{"jan_mar_per_day":10060.333333333334,"apr_may_per_day":9990.0,"jun_jul_per_day":10719.5,"apr_may_vs_jan_mar_pct":-0.7,"apr_may_vs_neighbors_pct":-3.8},"apr_may_2026_vs_2025_pct":31.0,"apr_may_2026_vs_2024_pct":-3.4,"rank_2026":["2026-06","2026-03","2026-07","2026-04","2026-02","2026-05","2026-01"]}}},"makers_head":["会社","受注 4月","受注 5月","X投稿 4月","X投稿 5月","動きの重なり"],"makers_rows":[[{"t":"ヘーベルハウス"},{"t":"+32%","c":"up"},{"t":"+45%","c":"up"},{"t":"88件（前年17件）"},{"t":"41件（前年19件）"},{"t":"少し重なる"}],[{"t":"大和ハウス"},{"t":"+28%","c":"up"},{"t":"+9%","c":"up"},{"t":"59件（前年49件）"},{"t":"93件（前年54件）"},{"t":"ほぼ無し"}],[{"t":"住友林業"},{"t":"+22%","c":"up"},{"t":"+3%","c":"up"},{"t":"65件（前年80件）"},{"t":"181件（前年67件）"},{"t":"ほぼ無し"}],[{"t":"タマホーム"},{"t":"+8%","c":"up"},{"t":"−23%","c":"down"},{"t":"48件（前年40件）"},{"t":"41件（前年28件）"},{"t":"逆向き気味"}],[{"t":"セキスイハイム"},{"t":"+2%","c":"up"},{"t":"+3%","c":"up"},{"t":"37件（前年22件）"},{"t":"63件（前年25件）"},{"t":"少し重なる"}],[{"t":"パナソニック ホームズ"},{"t":"+2%","c":"up"},{"t":"+3%","c":"up"},{"t":"13件（前年13件）"},{"t":"25件（前年19件）"},{"t":"ほぼ無し"}],[{"t":"ミサワホーム"},{"t":"−3%","c":"down"},{"t":"+3%","c":"up"},{"t":"25件（前年23件）"},{"t":"57件（前年15件）"},{"t":"少し重なる"}],[{"t":"積水ハウス"},{"t":"−4%","c":"down"},{"t":"+1%","c":"up"},{"t":"104件（前年123件）"},{"t":"190件（前年95件）"},{"t":"ほぼ無し"}],[{"t":"桧家住宅"},{"t":"−12%","c":"down"},{"t":"−1%","c":"down"},{"t":"5件（前年4件）"},{"t":"27件（前年2件）"},{"t":"ほぼ無し"}]]}</script>
+<script>
+(function(){
+  var D = JSON.parse(document.getElementById('data').textContent);
+  var NS = 'http://www.w3.org/2000/svg';
+  var YEARS = ['2024','2025','2026'];
+  function el(tag, attrs, parent){ var e=document.createElementNS(NS,tag); for(var k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+  function h(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+  function fmt(v, dec){ if(v==null) return '—'; return v.toLocaleString('ja-JP',{minimumFractionDigits:dec,maximumFractionDigits:dec}); }
+  function sgn(v){ if(v==null) return '—'; var r=Math.round(v); return (r>0?'+':(r<0?'−':'±'))+Math.abs(r)+'%'; }
+  function niceStep(raw, dec){ var p=Math.pow(10,Math.floor(Math.log10(raw))); var best=p, diff=Infinity; ((dec||p<1)?[1,2,2.5,5,10]:[1,2,5,10]).forEach(function(c){ var d=Math.abs(c*p-raw); if(d<diff){diff=d;best=c*p;} }); return best; }
+  function mlabel(k){ return k.slice(0,4)+'年'+parseInt(k.slice(5),10)+'月'; }
+  function tipAt(tip, host, svgW, xPos){ var r=host.getBoundingClientRect(); var tw=tip.offsetWidth, cx=xPos/svgW*r.width; var left=cx+12; if(left+tw>r.width) left=cx-tw-12; tip.style.left=Math.max(0,left)+'px'; tip.style.top='6px'; }
+
+  // ---------- monthly chart (bars or lines) on a shared month axis ----------
+  function mchart(o){
+    var host=o.host; host.innerHTML='';
+    var M=o.months, n=M.length, W=o.W||720, H=o.h||210, ml=o.ml||56, mr=o.mr||70, mt=o.mt||22, mb=28, pw=W-ml-mr, ph=H-mt-mb;
+    var vals=[]; o.series.forEach(function(s){ M.forEach(function(k){ var v=s.values[k]; if(v!=null) vals.push(v); }); });
+    var lo=Math.min.apply(null,vals.concat(o.includeZero===false?[]:[0])), hi=Math.max.apply(null,vals.concat(o.includeZero===false?[]:[0]));
+    if(o.yMin!=null) lo=o.yMin;
+    var st=niceStep((hi-lo)/4||1, o.tickDec); lo=Math.floor(lo/st)*st; hi=Math.ceil(hi/st)*st; if(hi===lo) hi=lo+st;
+    var step=pw/n; function x(i){ return ml+step*(i+0.5); } function y(v){ return mt+ph-(v-lo)/(hi-lo)*ph; }
+    var svg=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':o.aria},host);
+    if(o.band){ var b0=M.indexOf(o.band[0]), b1=M.indexOf(o.band[1]); if(b0>=0&&b1>=0){ el('rect',{x:ml+step*b0,y:mt,width:step*(b1-b0+1),height:ph,fill:'var(--band)'},svg);
+      if(o.bandLabel){ var bl=el('text',{x:ml+step*(b0+(b1-b0+1)/2),y:mt-7,'text-anchor':'middle','class':'bandlab'},svg); bl.textContent=o.bandLabel; } } }
+    for(var v=lo; v<=hi+1e-9; v+=st){ el('line',{x1:ml,x2:ml+pw,y1:y(v),y2:y(v),stroke:Math.abs(v)<1e-9?'var(--axis)':'var(--grid)','stroke-width':1},svg);
+      var tt=el('text',{x:ml-8,y:y(v)+4,'text-anchor':'end','class':'tick'},svg); tt.textContent=fmt(v,o.tickDec||0)+(o.tickUnit||''); }
+    M.forEach(function(k,i){ var mm=parseInt(k.slice(5),10); if(mm===1||mm===7||(!o.sparseTicks&&(mm===4||mm===10))){ var tx=el('text',{x:x(i),y:H-9,'text-anchor':'middle','class':'tick'},svg); tx.textContent=(mm===1?k.slice(2,4)+'年':'')+mm+'月'; } });
+    (o.markers||[]).forEach(function(mk){ var i=M.indexOf(mk.month); if(i<0) return; el('line',{x1:x(i),x2:x(i),y1:mt,y2:mt+ph,stroke:'var(--marker)','stroke-width':1,'stroke-opacity':.45},svg);
+      if(o.markerLabels){ var t=el('text',{x:x(i),y:mt-7,'text-anchor':'middle','class':'mk'},svg); t.textContent=mk.label; } });
+    o.series.forEach(function(s){
+      if(s.type==='bar'){
+        var bw=Math.min(18,step*0.62);
+        M.forEach(function(k,i){ var v=s.values[k]; if(v==null) return; var y0=y(0), y1=y(v), top=Math.min(y0,y1), hgt=Math.max(Math.abs(y1-y0),1), r=Math.min(4,hgt/2), xl=x(i)-bw/2, xr=x(i)+bw/2, d;
+          if(v>=0){ d='M'+xl+' '+(top+hgt)+' L'+xl+' '+(top+r)+' Q'+xl+' '+top+' '+(xl+r)+' '+top+' L'+(xr-r)+' '+top+' Q'+xr+' '+top+' '+xr+' '+(top+r)+' L'+xr+' '+(top+hgt)+' Z'; }
+          else { d='M'+xl+' '+top+' L'+xr+' '+top+' L'+xr+' '+(top+hgt-r)+' Q'+xr+' '+(top+hgt)+' '+(xr-r)+' '+(top+hgt)+' L'+(xl+r)+' '+(top+hgt)+' Q'+xl+' '+(top+hgt)+' '+xl+' '+(top+hgt-r)+' Z'; }
+          el('path',{d:d,fill:v>=0?s.pos:s.neg},svg); });
+      } else {
+        var pts=[]; M.forEach(function(k,i){ var v=s.values[k]; if(v!=null) pts.push([i,v]); }); if(!pts.length) return;
+        var d=pts.map(function(p,j){ var seg=(j?'L':'M')+x(p[0]).toFixed(1)+' '+y(p[1]).toFixed(1); if(s.step&&j) seg='L'+x(p[0]).toFixed(1)+' '+y(pts[j-1][1]).toFixed(1)+' '+seg; return seg; }).join(' ');
+        el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'},svg);
+        var last=pts[pts.length-1]; el('circle',{cx:x(last[0]),cy:y(last[1]),r:4,fill:s.color,stroke:'var(--ring)','stroke-width':2},svg);
+        if(s.endLabel){ var lt=el('text',{x:x(last[0])+8,y:y(last[1])+4+(s.endDy||0),'class':'endlab'},svg); lt.textContent=s.endLabel; }
+      }
+    });
+    var cross=el('line',{y1:mt,y2:mt+ph,stroke:'var(--axis)','stroke-width':1,visibility:'hidden'},svg);
+    var tip=h('div','tip'); tip.hidden=true; host.appendChild(tip);
+    var hit=el('rect',{x:ml,y:mt,width:pw,height:ph,fill:'transparent'},svg);
+    function show(ev){ var r=svg.getBoundingClientRect(); var px=(ev.clientX-r.left)/r.width*W; var i=Math.max(0,Math.min(n-1,Math.floor((px-ml)/step)));
+      cross.setAttribute('x1',x(i)); cross.setAttribute('x2',x(i)); cross.setAttribute('visibility','visible');
+      tip.innerHTML=''; tip.appendChild(h('b',null,mlabel(M[i])));
+      o.series.forEach(function(s){ var v=s.values[M[i]]; var line=h('div'); var sw=h('i'); sw.style.background=s.type==='bar'?(v!=null&&v<0?s.neg:s.pos):s.color; line.appendChild(sw);
+        line.appendChild(document.createTextNode((s.label?s.label+'　':'')+(v==null?'—':(o.signed?sgn(v):fmt(v,o.tipDec||0)+(o.unit||''))))); tip.appendChild(line); });
+      if(o.extraTip){ var ex=o.extraTip(M[i]); if(ex) tip.appendChild(h('div',null,ex)); }
+      tip.hidden=false; tipAt(tip, host, W, x(i)); }
+    hit.addEventListener('mousemove',show); hit.addEventListener('touchstart',function(e){show(e.touches[0]);},{passive:true});
+    hit.addEventListener('mouseleave',function(){ tip.hidden=true; cross.setAttribute('visibility','hidden'); });
+  }
+  function monthRange(a,b){ var out=[], y=+a.slice(0,4), m=+a.slice(5); while(true){ var k=y+'-'+(m<10?'0':'')+m; out.push(k); if(k===b) break; m++; if(m>12){m=1;y++;} } return out; }
+
+  // ---------- year overlay (Jan..Dec, one line per year) ----------
+  function overlay(o){
+    var host=o.host; host.innerHTML='';
+    var W=720,H=300,ml=54,mr=70,mt=26,mb=30, pw=W-ml-mr, ph=H-mt-mb;
+    var vals=[]; YEARS.forEach(function(yr){ for(var m=1;m<=12;m++){ var v=o.value(yr,m); if(v!=null) vals.push(v);} });
+    var vmax=Math.max.apply(null,vals)*1.04, ystep=niceStep(vmax/4), ymax=Math.ceil(vmax/ystep)*ystep;
+    function x(m){ return ml+(m-1)/11*pw; } function y(v){ return mt+ph-(v/ymax)*ph; }
+    var svg=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':o.aria},host);
+    el('rect',{x:x(4)-pw/22,y:mt,width:pw/11*2,height:ph,fill:'var(--band)'},svg);
+    var bl=el('text',{x:x(4.5),y:mt-8,'text-anchor':'middle','class':'bandlab'},svg); bl.textContent='4〜5月';
+    for(var v=0; v<=ymax+1e-9; v+=ystep){ el('line',{x1:ml,x2:ml+pw,y1:y(v),y2:y(v),stroke:v===0?'var(--axis)':'var(--grid)','stroke-width':1},svg);
+      var tt=el('text',{x:ml-8,y:y(v)+4,'text-anchor':'end','class':'tick'},svg); tt.textContent=fmt(v,0); }
+    if(o.ref!=null) el('line',{x1:ml,x2:ml+pw,y1:y(o.ref),y2:y(o.ref),stroke:'var(--ink-2)','stroke-width':1.5,'stroke-opacity':.5},svg);
+    for(var m=1;m<=12;m++){ var tx=el('text',{x:x(m),y:H-8,'text-anchor':'middle','class':'tick'},svg); tx.textContent=m+'月'; }
+    var ends=[];
+    YEARS.forEach(function(yr){ var pts=[]; for(var m=1;m<=12;m++){ var v=o.value(yr,m); if(v!=null) pts.push([m,v]); } if(!pts.length) return;
+      el('path',{d:pts.map(function(p,i){return (i?'L':'M')+x(p[0]).toFixed(1)+' '+y(p[1]).toFixed(1);}).join(' '),fill:'none',stroke:'var(--y'+yr+')','stroke-width':yr==='2026'?2.5:2,'stroke-linejoin':'round','stroke-linecap':'round'},svg);
+      var last=pts[pts.length-1]; if(yr==='2026') el('circle',{cx:x(last[0]),cy:y(last[1]),r:4.5,fill:'var(--y2026)',stroke:'var(--ring)','stroke-width':2},svg);
+      ends.push({yr:yr,x:x(last[0]),y:y(last[1])}); });
+    ends.forEach(function(e){ var clash=ends.some(function(o2){ return o2!==e && Math.abs(o2.x-e.x)<60 && Math.abs(o2.y-e.y)<14; }); if(clash && e.yr!=='2026') return;
+      var lt=el('text',{x:e.x+8,y:e.y+4,'class':'endlab'},svg); lt.textContent=e.yr+'年'; });
+    var cross=el('line',{y1:mt,y2:mt+ph,stroke:'var(--axis)','stroke-width':1,visibility:'hidden'},svg);
+    var tip=h('div','tip'); tip.hidden=true; host.appendChild(tip);
+    var hit=el('rect',{x:ml-10,y:mt,width:pw+20,height:ph,fill:'transparent'},svg);
+    function show(ev){ var r=svg.getBoundingClientRect(); var px=(ev.clientX-r.left)/r.width*W; var m=Math.max(1,Math.min(12,Math.round((px-ml)/pw*11)+1));
+      cross.setAttribute('x1',x(m)); cross.setAttribute('x2',x(m)); cross.setAttribute('visibility','visible');
+      tip.innerHTML=''; tip.appendChild(h('b',null,m+'月'+(o.tipUnit?'　'+o.tipUnit:'')));
+      YEARS.slice().reverse().forEach(function(yr){ var line=h('div'); var sw=h('i'); sw.style.background='var(--y'+yr+')'; line.appendChild(sw); line.appendChild(document.createTextNode(yr+'年　'+o.tip(yr,m))); tip.appendChild(line); });
+      tip.hidden=false; tipAt(tip, host, W, x(m)); }
+    hit.addEventListener('mousemove',show); hit.addEventListener('touchstart',function(e){show(e.touches[0]);},{passive:true});
+    hit.addEventListener('mouseleave',function(){ tip.hidden=true; cross.setAttribute('visibility','hidden'); });
+  }
+  function yearLegend(id, refText){ var lg=document.getElementById(id); lg.innerHTML=''; YEARS.forEach(function(yr){ var s=h('span'); var i=h('i'); i.style.background='var(--y'+yr+')'; s.appendChild(i); s.appendChild(document.createTextNode(yr+'年')); lg.appendChild(s); });
+    if(refText){ var s=h('span'); var i=h('i'); i.style.background='var(--ink-2)'; i.style.opacity='.5'; s.appendChild(i); s.appendChild(document.createTextNode(refText)); lg.appendChild(s); } }
+  function yearTable(id, value, dec){ var t=h('table'); var tr=h('tr'); tr.appendChild(h('th',null,'月')); YEARS.forEach(function(yr){ tr.appendChild(h('th',null,yr+'年')); }); t.appendChild(tr);
+    for(var m=1;m<=12;m++){ var r=h('tr',(m===4||m===5)?'am':null); r.appendChild(h('td',null,m+'月')); YEARS.forEach(function(yr){ r.appendChild(h('td',null,fmt(value(yr,m),dec))); }); t.appendChild(r); }
+    var box=document.getElementById(id); box.innerHTML=''; box.appendChild(t); }
+  function facts(id, items){ var box=document.getElementById(id); box.innerHTML=''; items.forEach(function(it){ var f=h('div','fact'+(it.now?' now':'')); f.appendChild(h('div','k',it.k)); f.appendChild(h('div','v',it.v)); f.appendChild(h('div','s',it.s)); box.appendChild(f); }); }
+  function controls(id, list, onpick){ var box=document.getElementById(id); box.innerHTML='';
+    list.forEach(function(it,i){ var b=h('button',null,it.label); b.type='button'; b.setAttribute('aria-pressed',i===0?'true':'false');
+      b.addEventListener('click',function(){ Array.prototype.forEach.call(box.children,function(c){c.setAttribute('aria-pressed','false');}); b.setAttribute('aria-pressed','true'); onpick(it); }); box.appendChild(b); });
+    onpick(list[0]); }
+
+  // ---------- 1) orders ----------
+  var OM=D.orders_monthly, OMK=Object.keys(OM).sort();
+  var oVals={}; OMK.forEach(function(k){ oVals[k]=OM[k].median_yoy; });
+  mchart({host:document.getElementById('o-chart'), months:OMK, series:[{label:'中央値', type:'bar', values:oVals, pos:'var(--accent)', neg:'var(--neg)'}],
+    band:['2026-04','2026-05'], bandLabel:'4〜5月', signed:true, tickUnit:'%', h:230, mr:20, aria:'大手10社の受注の前年同月比の中央値。2025年1月から2026年8月',
+    extraTip:function(k){ return '前年超え '+OM[k].up+'/'+OM[k].total+'社・2年前超え '+(D.two_year_up[k]!=null?D.two_year_up[k]:'—')+'/'+OM[k].total+'社'; }});
+  facts('o-facts', D.orders_facts);
+  (function(){ var t=h('table'); var hr=h('tr'); ['月','前年を上回った会社','2年前を上回った会社','中央値（前年比）','中央値（2年前比）'].forEach(function(c){ hr.appendChild(h('th',null,c)); }); t.appendChild(hr);
+    OMK.forEach(function(k){ var r=h('tr',(k==='2026-04'||k==='2026-05')?'am':null); r.appendChild(h('td',null,mlabel(k))); r.appendChild(h('td',null,OM[k].up+' / '+OM[k].total+'社')); r.appendChild(h('td',null,(D.two_year_up[k]!=null?D.two_year_up[k]+' / '+OM[k].total+'社':'—')));
+      var a=h('td',OM[k].median_yoy>0?'up':(OM[k].median_yoy<0?'down':null),sgn(OM[k].median_yoy)); r.appendChild(a);
+      var b=h('td',OM[k].median_vs_2y>0?'up':(OM[k].median_vs_2y<0?'down':null),sgn(OM[k].median_vs_2y)); r.appendChild(b); t.appendChild(r); });
+    document.getElementById('o-table').appendChild(t); })();
+
+  // ---------- 2) journey + lead table ----------
+  (function(){ var box=document.getElementById('journey'); D.journey.forEach(function(s){ var d=h('div','step'+(s.hit?' hit':'')); d.appendChild(h('span','when',s.when)); d.appendChild(h('span','what',s.what)); d.appendChild(h('span','sig',s.sig)); box.appendChild(d); }); })();
+  (function(){ var box=document.getElementById('lead-table'); var ul=h('ul','leadlist');
+    D.lead_rows.forEach(function(r){ var li=h('li'); var top=h('div','lt'); top.appendChild(h('b',null,r.label)); top.appendChild(h('span','chip',r.r<0?r.when.replace('前','前（逆向き）'):r.when)); li.appendChild(top);
+      var mid=h('div','lm'); var mt=h('span','meter'); var bar=h('i'); bar.style.width=Math.round(Math.abs(r.r)*100)+'%'; bar.style.background=r.r<0?'var(--neg)':'var(--accent)'; mt.appendChild(bar); mid.appendChild(mt);
+      mid.appendChild(h('span','lw','重なり '+r.word+'（'+(r.r<0?'−':'+')+Math.abs(r.r).toFixed(2)+'）')); mid.appendChild(h('span','ls','期間を分けると '+r.split)); li.appendChild(mid);
+      li.appendChild(h('p','lr',r.read)); ul.appendChild(li); });
+    box.appendChild(ul); })();
+
+  // ---------- 3) flow small multiples ----------
+  var FM=monthRange('2025-01','2026-09');
+  var markers=D.markers;
+  mchart({host:document.getElementById('f1'), months:FM, series:[{label:'住宅ローンの話題', type:'bar', values:D.loan_yoy, pos:'var(--s1)', neg:'var(--neg)'}], markers:markers, markerLabels:true, signed:true, tickUnit:'%', h:190, mr:20, mt:26, aria:'Xの住宅ローンの話題の前年同月比'});
+  mchart({host:document.getElementById('f2'), months:FM, series:[{label:'受注の中央値', type:'bar', values:oVals, pos:'var(--accent)', neg:'var(--neg)'}], markers:markers, signed:true, tickUnit:'%', h:170, mr:20, aria:'大手10社の受注の前年同月比の中央値'});
+  (function(){ var lg=document.getElementById('f3-legend'); [['フラット35（最頻金利）','var(--s2)'],['日銀の政策金利','var(--s1)']].forEach(function(p){ var s=h('span'); var i=h('i'); i.style.background=p[1]; s.appendChild(i); s.appendChild(document.createTextNode(p[0])); lg.appendChild(s); }); })();
+  mchart({host:document.getElementById('f3'), months:FM, series:[{label:'フラット35', type:'line', values:D.flat35, color:'var(--s2)'},{label:'日銀の政策金利', type:'line', values:D.policy, color:'var(--s1)', step:true}], markers:markers, tickDec:1, tipDec:2, unit:'%', tickUnit:'%', h:190, mr:20, aria:'フラット35の金利と日銀の政策金利'});
+  (function(){ var ul=document.getElementById('mklist'); markers.forEach(function(m){ var li=h('li'); var b=h('b',null,m.label+' '); li.appendChild(b); li.appendChild(document.createTextNode(m.text)); ul.appendChild(li); }); })();
+
+  // ---------- 4) events + market charts ----------
+  (function(){ var box=document.getElementById('events'); D.events.forEach(function(e){ var li=h('li', e.am?'am':null); li.appendChild(h('span','d',e.date_label));
+    var c=h('span','c'); var i=h('i'); i.style.background='var(--cat-'+e.cat+')'; c.appendChild(i); c.appendChild(document.createTextNode(e.cat_label)); li.appendChild(c);
+    var t=h('span','t',e.text); if(e.url){ var a=h('a',null,'出典'); a.href=e.url; a.target='_blank'; a.rel='noopener'; t.appendChild(a); } li.appendChild(t); box.appendChild(li); }); })();
+  var EM=monthRange('2025-07','2026-09');
+  mchart({host:document.getElementById('n-chart'), months:EM, series:[{label:'', type:'line', values:D.nikkei, color:'var(--accent)'}], band:['2026-04','2026-05'], includeZero:false, yMin:D.nikkei_min, tickDec:0, tipDec:0, unit:'円', sparseTicks:true, W:340, h:220, ml:52, mr:10, aria:'日経平均の月末終値'});
+  mchart({host:document.getElementById('b-chart'), months:EM, series:[{label:'', type:'line', values:D.brent, color:'var(--accent)'}], band:['2026-04','2026-05'], includeZero:false, yMin:50, tickDec:0, tipDec:1, unit:'ドル', sparseTicks:true, W:340, h:220, ml:40, mr:10, aria:'北海ブレント原油の月平均'});
+  mchart({host:document.getElementById('u-chart'), months:EM, series:[{label:'', type:'line', values:D.usdjpy, color:'var(--accent)'}], band:['2026-04','2026-05'], includeZero:false, yMin:140, tickDec:0, tipDec:1, unit:'円', sparseTicks:true, W:340, h:220, ml:40, mr:10, aria:'ドル円の月平均'});
+
+  // ---------- 5) X overlay ----------
+  controls('x-controls', D.x_series, function(s){
+    var pd=D.x[s.key].per_day, ix=D.x[s.key].index, sp=D.x[s.key].spring;
+    function key(yr,m){ return yr+'-'+(m<10?'0':'')+m; }
+    yearLegend('x-legend','各年の1〜3月の平均＝100');
+    overlay({host:document.getElementById('x-chart'), value:function(yr,m){ var v=ix[key(yr,m)]; return v==null?null:v; }, ref:100, tipUnit:'1〜3月＝100',
+      tip:function(yr,m){ var k=key(yr,m); return ix[k]==null?'—':fmt(ix[k],0)+'（1日'+fmt(pd[k],1)+'件）'; }, aria:s.label+'の投稿数の動き。各年の1〜3月の平均を100として月別に重ねたグラフ'});
+    var p24=sp['2024'].apr_may_vs_jan_mar_pct, p25=sp['2025'].apr_may_vs_jan_mar_pct, p26=sp['2026'].apr_may_vs_jan_mar_pct;
+    if(s.key===D.maker_key){ var g=D.after_gw; facts('x-facts',[
+        {k:'例年の4〜5月', v:sgn(p24)+'／'+sgn(p25), s:'2024年／2025年。1〜3月と比べて'},
+        {k:'2026年の4〜5月', v:sgn(p26), s:'1〜3月と比べて', now:true},
+        {k:'連休明けの5週間（5/4〜6/7）', v:sgn(g['2026'].change_pct), s:'4月の5週間と比べて。13社中'+g['2026'].makers_rising+'社が増加（2025年は'+sgn(g['2025'].change_pct)+'・'+g['2025'].makers_rising+'社）', now:true}]);
+    } else { facts('x-facts',[{k:'2024年の4〜5月', v:sgn(p24), s:'1〜3月と比べて'},{k:'2025年の4〜5月', v:sgn(p25), s:'1〜3月と比べて'},{k:'2026年の4〜5月', v:sgn(p26), s:'1〜3月と比べて', now:true}]); }
+    yearTable('x-table', function(yr,m){ var v=pd[key(yr,m)]; return v==null?null:v; }, 1);
+  });
+
+  // ---------- 6) coverage timeline ----------
+  (function(){ var box=document.getElementById('timeline'); var head=h('div','tl-head'); for(var i=0;i<9;i++) head.appendChild(h('span',null,(i+1)+'月'));
+    box.appendChild(h('div')); box.appendChild(head);
+    function pos(m, d){ return ((m-1)+(d-1)/30)/9*100; }
+    D.coverage.forEach(function(row){ var lab=h('div','tl-label',row.label); lab.appendChild(h('small',null,row.sub)); box.appendChild(lab);
+      var tr=h('div','tl-track'); var band=h('div','tl-band'); band.style.left=pos(4,1)+'%'; band.style.width=(pos(6,1)-pos(4,1))+'%'; tr.appendChild(band);
+      row.spans.forEach(function(s){ var b=h('div','tl-bar'+(row.thin?' thin':'')); var l=pos(s[0],s[1]), r=Math.min(pos(s[2],s[3]),100); b.style.left=l+'%'; b.style.width=Math.max(r-l,1.2)+'%'; tr.appendChild(b); });
+      tr.setAttribute('role','img'); tr.setAttribute('aria-label', row.label+'：'+row.sub); box.appendChild(tr); });
+    box.appendChild(h('div')); box.appendChild(h('div','tl-note','色の帯＝4〜5月')); })();
+
+  // ---------- 7) starts overlay + maker table ----------
+  controls('s-controls', D.starts_series, function(s){
+    var mo=D.starts[s.key].monthly, sp=D.starts[s.key].spring;
+    function key(yr,m){ return yr+'-'+(m<10?'0':'')+m; }
+    yearLegend('s-legend');
+    overlay({host:document.getElementById('s-chart'), value:function(yr,m){ var v=mo[key(yr,m)]; return v==null?null:v; }, tipUnit:'戸', tip:function(yr,m){ var v=mo[key(yr,m)]; return v==null?'—':fmt(v,0)+'戸'; }, aria:s.label+'の月別着工戸数'});
+    facts('s-facts',[{k:'2026年4〜5月 対 2025年', v:sgn(sp.apr_may_2026_vs_2025_pct), s:'2025年春は着工が大きく落ち込んだ'},{k:'2026年4〜5月 対 2024年', v:sgn(sp.apr_may_2026_vs_2024_pct), s:'影響のない普通の年と比べると', now:true},{k:'2026年 4〜5月 対 1〜3月', v:sgn(sp['2026'].apr_may_vs_jan_mar_pct), s:'2024年は '+sgn(sp['2024'].apr_may_vs_jan_mar_pct)}]);
+  });
+  (function(){ var t=h('table'); var hr=h('tr'); D.makers_head.forEach(function(c){ hr.appendChild(h('th',null,c)); }); t.appendChild(hr);
+    D.makers_rows.forEach(function(row){ var r=h('tr'); row.forEach(function(c){ var td=h('td',null,c.t); if(c.c) td.className=c.c; r.appendChild(td); }); t.appendChild(r); });
+    document.getElementById('m-table').appendChild(t); })();
+})();
+</script>
+
+</body>
+</html>

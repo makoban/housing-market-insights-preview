@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="where-built.css">
 <link rel="stylesheet" href="visual-direction.css">
 <link rel="stylesheet" href="readability.css">
+<link rel="stylesheet" href="analysis-tabs.css">
 </head>
 <body>
 <div class="layout">
@@ -24,6 +25,7 @@
     <a href="#where-built"><i data-lucide="map-pinned"></i><span>建築地域と時期</span></a>
     <a href="#transactions"><i data-lucide="receipt-japanese-yen"></i><span>取引価格の事例</span></a>
     <a href="#economy"><i data-lucide="chart-no-axes-combined"></i><span>経済指標</span></a>
+    <a href="analysis.html"><i data-lucide="chart-spline"></i><span>再分析と今後</span></a>
     <a href="#method"><i data-lucide="info"></i><span>読み方</span></a>
   </nav>
   <div class="sidebar-bottom">データの出典と<br>対象件数を一緒に表示</div>
@@ -33,13 +35,17 @@
     <div><div class="eyebrow">I&F × BANTEX / HOUSING MARKET INSIGHTS</div><h1>住宅購入マインド指数</h1><p>住宅メーカーへの反応、Xの話題、住宅着工と経済をひとつの画面で。</p></div>
     <span class="status"><span class="status-dot"></span>調査データ</span>
   </header>
+  <nav class="view-tabs" aria-label="画面切り替え">
+    <a href="./" aria-current="page"><i data-lucide="layout-dashboard" aria-hidden="true"></i><span>市場ダッシュボード</span></a>
+    <a href="analysis.html"><i data-lucide="chart-spline" aria-hidden="true"></i><span>春の再分析・今後の見通し</span></a>
+  </nav>
 
   <section class="pulse-section" aria-label="市場の動きと見立て">
     <div class="pulse-heading"><div><span class="eyebrow">MARKET PULSE / 方向をひと目で</span><h2>いま・来月の向き</h2></div><span class="tag blue-tag">観測メーカー <b id="tracked-makers">—</b></span></div>
     <div class="pulse-grid">
       <article class="card pulse-card pulse-social"><span class="pulse-time">いま / X投稿</span><div class="pulse-symbol"><i data-lucide="arrow-down-right"></i></div><h3>Xの住宅話題は減少</h3><p id="topic-direction">—</p><small>直近15日と、その前の15日を比較</small><div class="pulse-reason"><strong>対象の5テーマ</strong><span id="social-factors">—</span><a href="#topics">投稿数の内訳を見る ↗</a></div></article>
       <article class="card pulse-card pulse-housing"><span class="pulse-time">いま / 着工</span><div class="pulse-symbol"><i data-lucide="arrow-up-right"></i></div><h3>分譲一戸建ては増加</h3><p id="starts-yoy">—</p><small>2026年7月・前年同月比</small><div class="pulse-reason"><strong>比較した数字</strong><span id="housing-factors">—</span><a href="#housing">月別の推移を見る ↗</a></div></article>
-      <article class="card pulse-card pulse-forecast"><span class="pulse-time">来月 / 見通し</span><div class="pulse-symbol"><i data-lucide="arrow-down-right"></i></div><h3>話題の勢いは弱め</h3><p>販売数は未予測</p><small>Xの話題と着工から見た方向感</small><div class="pulse-reason"><strong>見通しの材料</strong><span id="forecast-factors">—</span><a href="#economy">参考の経済指標を見る ↗</a></div></article>
+      <article class="card pulse-card pulse-forecast"><span class="pulse-time">来月 / 話題の目安</span><div class="pulse-symbol"><i data-lucide="arrow-down-right"></i></div><h3>話題の勢いは弱め</h3><p>販売数は未予測</p><small>短期の投稿量から見た方向感</small><div class="pulse-reason"><strong>見通しの材料</strong><span id="forecast-factors">—</span><a href="analysis.html#forecast-answer">予想できる範囲を見る ↗</a></div></article>
       <article class="card pulse-card pulse-risk"><span class="pulse-time">炎上 / 兆し</span><div class="pulse-symbol"><i data-lucide="circle-help"></i></div><h3>判断材料が不足</h3><p>炎上度：—</p><small>投稿の広がりに関するデータ不足</small><div class="pulse-reason"><strong>判断を保留した理由</strong><span id="risk-factors">—</span><a href="#brands">メーカー別の反応を見る ↗</a></div></article>
     </div>
     <p class="pulse-caption">青・緑は集計済みの動き、点線の黄は来月の見通し、「？」は情報不足を示します。</p>
