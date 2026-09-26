@@ -106,6 +106,9 @@
   text-decoration: none;
 }
 .report-jump a:hover { background: #e8f3f2; }
+.wrap { gap: 26px; }
+.wrap > .view-tabs { margin: 0; }
+.wrap h1 .phrase { display: inline-block; max-width: 100%; white-space: nowrap; }
 .wrap .lead { font-size: 16px; }
 .wrap .note, .wrap .psy .card .ev { font-size: 14px; }
 .wrap .keys span { font-size: 15px; }
