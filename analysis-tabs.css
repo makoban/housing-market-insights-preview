@@ -42,6 +42,7 @@
   border: 1px solid #bfded8;
   border-radius: 19px;
   background: linear-gradient(135deg, #ecf8f4, #fff 60%);
+  color: #183442;
 }
 .forecast-overview h2 {
   margin: 0 0 10px;
